@@ -10,3 +10,6 @@ https://github.com/ZaitzeV16/git-lesson-repository.git
 
 * patchwork
 https://github.com/ZaitzeV16/patchwork.git
+
+* [Github.io](https://zaitzev16.github.io./)
+https://github.com/ZaitzeV16/ZaitzeV16.github.io.git
