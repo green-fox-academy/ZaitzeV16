@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <title>My blog</title>
+    </head>
+
+    <body>
+        <div id="header">
+            <h1 id="header-text">The blog</h1>
+        </div>
+
+        <div id="body">
+            <form>
+                <h3 id="new-post-header">Add new post</h3>
+
+                <div>
+                    <div>
+                        <label
+                                for="new-post-title-content"
+                                id="new-post-title-label"
+                        >
+                            <b>Title</b>
+                        </label>
+                    </div>
+                    <div>
+                        <input
+                                type="text"
+                                id="new-post-title-content"
+                                placeholder="There is you placeholder"
+                        >
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label
+                                for="new-post-content-content"
+                                id="new-post-content-label"
+                        >
+                            <b>Content</b>
+                        </label>
+                    </div>
+                    <div>
+                        <textarea id="new-post-content-content"></textarea>
+                    </div>
+                </div>
+
+                <button
+                        id="post-submit-button"
+                        type="button"
+                >
+                    Submit
+                </button>
+            </form>
+
+            <div id="posts">
+            <h3>Posts</h3>
+
+            <ul id="post-list">
+                <li class="post-list-item">
+                    <h2 class="post-list-item-title">Post 1 title</h2>
+                    <p class="post-list-item-content">Post 1 content</p>
+                </li>
+
+                <li class="post-list-item">
+                    <h2 class="post-list-item-title">Post 2 title</h2>
+                    <p class="post-list-item-content">Post 2 content</p>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </body>
+</html>
