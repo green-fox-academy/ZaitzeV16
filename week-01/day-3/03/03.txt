@@ -1,1 +1,5 @@
 But I started with VIM
+
+and some more changes
+
+after reset 04.txt
