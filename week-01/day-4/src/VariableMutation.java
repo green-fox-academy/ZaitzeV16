@@ -30,8 +30,7 @@ public class VariableMutation {
         int e = 8;
         // please cube of e's value
         System.out.print("The cube of " + e + " is: ");
-        e *= e;
-        System.out.println(e);
+        System.out.println(Math.pow(e, 3));
 
         int f1 = 123;
         int f2 = 345;
@@ -46,9 +45,7 @@ public class VariableMutation {
         int g1 = 350;
         int g2 = 200;
         // tell if the double of g2 is bigger than g1 (print as a boolean)
-        System.out.print("The double of " + g2 +
-                "(" + g2 * 2 + ")" +
-                " is bigger than " + g1 + ": ");
+
 
         if (2 * g2 > g1) {
             System.out.println(true);
