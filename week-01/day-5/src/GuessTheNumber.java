@@ -23,6 +23,9 @@ public class GuessTheNumber {
         System.out.print("Please choose a number: ");
         int userInput = scanner.nextInt();
 
+        // any number of guesses
+        // the program keeps running until the guess is right
+        // or any error occurs, like input is 3.14
         while (userInput != randomNumber) {
             if (userInput < randomNumber) {
                 System.out.println("The stored number is higher");
