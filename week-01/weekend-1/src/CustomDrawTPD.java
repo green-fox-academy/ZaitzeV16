@@ -129,24 +129,6 @@ public class CustomDrawTPD {
 //        int height = scanner.nextInt();
         int height = 10;
 
-        /*
-        __________________________________________
-                    Triangle options
-        a       |   b       |   c       |   d
-                |           |           |
-        *       |       *   |   *****   |   *****
-        **      |      **   |   ****    |    ****
-        ***     |     ***   |   ***     |     ***
-        ****    |    ****   |   **      |      **
-        *****   |   *****   |   *       |       *
-        __________________________________________
-        */
-
-        /*
-        area = height^2
-        number of stars = (height^2 + height) / 2
-        number of spaces = area - number of stars
-         */
         // _____________________________________________________________________
         // initializing parameters
         boolean leftStar = false;
@@ -197,13 +179,8 @@ public class CustomDrawTPD {
             rightItem = '*';
         }
 
-        // helper variables to check the number of printed elements
-        int area = height;
-        int currentArea = 0;
-
         leftLength = leftLengthBase;
         rightLength = rightLengthBase;
-
 
         for (int line = 1; line <= height; line++) {
             for (int left = 1; left <= height; left++) {
@@ -212,9 +189,6 @@ public class CustomDrawTPD {
                 } else {
                     System.out.print(rightItem);
                 }
-                // helper variable for dev and test
-                // todo: remove
-                currentArea++;
             }
             if (leftLengthIncrement) {
                 leftLength++;
