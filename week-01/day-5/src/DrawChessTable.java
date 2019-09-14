@@ -19,9 +19,9 @@ public class DrawChessTable {
         // iterate through lines
         for (int line = 0; line < 8; line++) {
             // print a line starting with percent
-            if (startWithPercent){
+            if (startWithPercent) {
                 for (int j = 0; j < 8; j++) {
-                    if (j % 2 == 0){
+                    if (j % 2 == 0) {
                         System.out.print("%");
                     } else {
                         System.out.print(" ");
@@ -29,7 +29,7 @@ public class DrawChessTable {
                 }
             } else {
                 for (int j = 0; j < 8; j++) {
-                    if (j % 2 == 0){
+                    if (j % 2 == 0) {
                         System.out.print(" ");
                     } else {
                         System.out.print("%");
