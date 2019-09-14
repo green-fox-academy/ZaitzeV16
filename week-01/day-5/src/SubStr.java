@@ -13,11 +13,9 @@ public class SubStr {
     }
 
     public static int subStr(String input, String q) {
-        int indexOfStart = input.indexOf(q);
-
         // if String.indexOf(substring)
         // does not find a match, returns -1
         // because of this, we only need to return indexOfStart variable
-        return indexOfStart;
+        return input.indexOf(q);
     }
 }
