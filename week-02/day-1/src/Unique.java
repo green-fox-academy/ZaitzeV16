@@ -15,7 +15,7 @@ public class Unique {
 
     private static int[] unique(int[] ints) {
         int[] result = IntStream.of(ints).distinct().toArray();
-        
+
         return result;
     }
 }
