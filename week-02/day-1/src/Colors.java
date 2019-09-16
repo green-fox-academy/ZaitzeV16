@@ -13,7 +13,7 @@ public class Colors {
 
         String[][] colors = new String[3][];
         String[][] newColors = new String[3][];
-        
+
         colors[0] = new String[5];
         colors[1] = new String[3];
         colors[2] = new String[4];
