@@ -40,7 +40,7 @@ public class PurpleSteps {
         }
     }
 
-    private static void drawStair(int x, int y, int width, Graphics graphics) {
+    public static void drawStair(int x, int y, int width, Graphics graphics) {
         int height = width;
 
         int[] widths = new int[5];
