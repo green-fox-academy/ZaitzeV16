@@ -34,7 +34,7 @@ public class PurpleSteps3d {
             y = y0 + height;
 
             // call function from PurpleSteps class
-            PurpleSteps.drawStair(x, y, width, graphics);
+            PurpleSteps.fillRect(x, y, width, graphics);
 
 
             // for the purple stair
@@ -44,7 +44,7 @@ public class PurpleSteps3d {
             y = y + (difference / 2);
 
             // call function from PurpleSteps class
-            PurpleSteps.drawStair(x, y, width - difference, graphics);
+            PurpleSteps.fillRect(x, y, width - difference, graphics);
         }
     }
 

@@ -26,7 +26,7 @@ public class PurpleSteps {
             x = x0 + (stair * width);
             y = y0 + (stair * height);
 
-            drawStair(x, y, width, graphics);
+            fillRect(x, y, width, graphics);
 
 
             // for the purple stair
@@ -35,12 +35,12 @@ public class PurpleSteps {
             x = x + (difference / 2);
             y = y + (difference / 2);
 
-            drawStair(x, y, (width - difference), graphics);
+            fillRect(x, y, (width - difference), graphics);
 
         }
     }
 
-    public static void drawStair(int x, int y, int width, Graphics graphics) {
+    public static void fillRect(int x, int y, int width, Graphics graphics) {
         int height = width;
 
         int[] widths = new int[5];
