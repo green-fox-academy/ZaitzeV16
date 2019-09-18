@@ -28,7 +28,7 @@ public class GoToCenter {
 
     }
 
-    private static void drawNLines(int x, int y, Graphics graphics) {
+    public static void drawNLines(int x, int y, Graphics graphics) {
         graphics.drawLine(x, y, WIDTH / 2, HEIGHT / 2);
     }
 
