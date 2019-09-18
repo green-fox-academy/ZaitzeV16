@@ -12,13 +12,23 @@ public class FunctionToCenter {
         // Fill the canvas with lines from the edges, every 20 px, to the center.
 
         int diff = 20;
-//        int x = diff; // diff => WIDTH - diff
-//        int y = diff; // diff => HEIGHT - diff
+        // diff => WIDTH - diff
+        // diff => HEIGHT - diff
 
-        for (int x = diff; x <= (WIDTH - diff); x++) {
+        // Because I am using the maximum resolution for the canvas,
+        //  (WIDTH - (diff * 2)) % 20 != 0  =>  x == (WIDTH - diff) never occurs
+        //  so I need a valid divisor
+        //  this will be the step for the while loop to count down
+        //  and when finished, the new value of step will be used in for loops as step
+        int step = 100;
+        while ((WIDTH - (diff * 2)) % step != 0) {
+            step--;
+        }
+
+        for (int x = diff; x <= (WIDTH - diff); x += step) {
 
             if ((x == diff) || (x == (WIDTH - diff))) {
-                for (int y = diff; y <= (HEIGHT - diff); y++) {
+                for (int y = diff; y <= (HEIGHT - diff); y += step) {
                     setNewRandomColor(graphics);
                     drawNLines(x, y, graphics);
                 }
@@ -39,8 +49,8 @@ public class FunctionToCenter {
     private static void setNewRandomColor(Graphics graphics) {
         Random random = new Random();
         graphics.setColor(new Color(random.nextInt(256),
-                                    random.nextInt(256),
-                                    random.nextInt(256)));
+                random.nextInt(256),
+                random.nextInt(256)));
     }
 
     // Don't touch the code below
