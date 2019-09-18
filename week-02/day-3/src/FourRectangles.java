@@ -12,7 +12,7 @@ public class FourRectangles {
         Random random = new Random();
 
         // initialize variables
-        int width, height, x0, y0;
+        int width, height;
         int[] widths = new int[5];
         int[] heights = new int[5];
 
