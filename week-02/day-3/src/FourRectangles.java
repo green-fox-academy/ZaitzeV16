@@ -16,7 +16,7 @@ public class FourRectangles {
         int[] widths = new int[5];
         int[] heights = new int[5];
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 400; i++) {
             graphics.setColor(new Color(random.nextInt(256),
                                         random.nextInt(256),
                                         random.nextInt(256)));
