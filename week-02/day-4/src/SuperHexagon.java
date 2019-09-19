@@ -6,7 +6,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class SuperHexagon {
     public static void mainDraw(Graphics graphics) {
         // messy, but works
-        
+
         int borderLength = 50;
         int numberOfFloors = 7;
         int x0 = WIDTH / 4;
@@ -23,6 +23,7 @@ public class SuperHexagon {
         int yFloorStep = borderLength;
         int floorLength = numberOfFloors / 2;
 
+
         for (int floor = 0; floor < numberOfFloors; floor++) {
             blank = (floor - (numberOfFloors + 1) / 2);
 
@@ -31,12 +32,13 @@ public class SuperHexagon {
                 y = y0 - (column * yInLineStep);
 
                 int[][] currHexagon = createHexagonCoordinates(x, y, borderLength, graphics);
+
+                // keep track whether we need to draw, or leave spot blank
                 if (blank < 0) {
                     graphics.drawPolygon(currHexagon[0], currHexagon[1], 6);
                 } else {
                     blank--;
                 }
-
             }
             if (floor < (numberOfFloors / 2)) {
                 floorLength++;
@@ -62,9 +64,9 @@ public class SuperHexagon {
         // hexagonCorners[0] => x points for this hexagon
         // hexagonCorners[1] => y points for this hexagon
 
-        //                    0 => 1 => 2 =>  3  => 4  => 5 => 0
+        //                 => 0 => 1 => 2 =>  3  => 4  => 5 => 0 =>
         double[] xSteppes = {0.0, 1.0, 0.5, -0.5, -1.0, -0.5, 0.5};
-        //                    0 => 1 => 2 => 3 => 4 =>  5 =>  0
+        //                 => 0 => 1 => 2 => 3 => 4 =>  5 =>  0 =>
         double[] ySteppes = {0.0, 0.0, 0.5, 0.5, 0.0, -0.5, -0.5};
 
         for (int i = 0; i < ySteppes.length; i++) {
