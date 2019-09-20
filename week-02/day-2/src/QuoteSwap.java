@@ -12,22 +12,36 @@ public class QuoteSwap {
         // Also, print the sentence to the output with spaces in between.
         System.out.println(quoteSwap(list));
         // Expected output: "What I cannot create I do not understand."
-
     }
 
-    private static String quoteSwap(ArrayList<String> list) {
+    private static String quoteSwap(ArrayList<String> wordsAL) {
+        /**
+         * This function takes an ArrayList<String> as parameter,
+         *  find the index of the word "do" and "cannot", changes them
+         *  and joins the words with a " " delimiter.
+         *
+         *
+         * @param   wordsAL ArrayList<String> - list of the words to join
+         *
+         * @return String - items of param as a joined String
+         */
+
         String result = "";
-        int indexDo = list.indexOf("do");
-        String myDo = list.get(indexDo);
-        int indexCannot = list.indexOf("cannot");
+        int indexDo = wordsAL.indexOf("do");
+        String myDo = wordsAL.get(indexDo);
+        int indexCannot = wordsAL.indexOf("cannot");
 
-        list.set(indexDo, list.get(indexCannot));
-        list.set(indexCannot, myDo);
+        wordsAL.set(indexDo, wordsAL.get(indexCannot));
+        wordsAL.set(indexCannot, myDo);
 
-        for (String piece : list) {
+        result = String.join(" ", wordsAL);
+
+        /* OR
+        for (String piece : wordsAL) {
             result += " " + piece;
         }
-
         return result.trim();
+         */
+        return result;
     }
 }
