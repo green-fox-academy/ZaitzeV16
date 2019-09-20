@@ -12,18 +12,16 @@ public class IsInList {
     }
 
     private static boolean checkNums(ArrayList<Integer> list) {
-        // 4,8,12,16
+        // 4, 8, 12, 16     - all items to search
         ArrayList<Integer> nums = new ArrayList<>();
         nums.add(4);
         nums.add(8);
         nums.add(12);
         nums.add(16);
 
-        boolean result = false;
         if (list.containsAll(nums)) {
-            result = true;
+            return true;
         }
-
-        return result;
+        return false;
     }
 }
