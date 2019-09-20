@@ -12,24 +12,35 @@ public class Matchmaking {
         System.out.println(makingMatches(girls, boys));
     }
 
-    private static ArrayList<String> makingMatches(ArrayList<String> girls,
-                                                   ArrayList<String> boys) {
+    private static ArrayList<String> makingMatches(ArrayList<String> arrList1,
+                                                   ArrayList<String> arrList2) {
+        /**
+         * This function takes 2 ArrayLists of String as parameters and
+         *  merges their elements 1 by 1, starting with the first parameter.
+         *
+         * If the ArrayLists are not the same size, the function just puts
+         *  the remaining element at the end of the result.
+         *
+         *
+         * @arrList1 first parameter - ArrayList<String>, EVEN indices
+         * @arrList2 second parameter - ArrayList<String>, ODD indices
+         *
+         * @return the merged ArrayList<String> of the parameters
+         */
         ArrayList<String> matchList = new ArrayList<>();
 
         // set iterators
-        Iterator<String> iterBoy = boys.iterator();
-        Iterator<String> iterGirl = girls.iterator();
+        Iterator<String> iterArrList1 = arrList1.iterator();
+        Iterator<String> iterArrList2 = arrList2.iterator();
 
-        while (iterGirl.hasNext() || iterBoy.hasNext()) {
-            if (iterGirl.hasNext()) {
-                matchList.add(iterGirl.next());
+        while (iterArrList1.hasNext() || iterArrList2.hasNext()) {
+            if (iterArrList1.hasNext()) {
+                matchList.add(iterArrList1.next());
             }
-
-            if (iterBoy.hasNext()) {
-                matchList.add(iterBoy.next());
+            if (iterArrList2.hasNext()) {
+                matchList.add(iterArrList2.next());
             }
         }
-
         return matchList;
     }
 }
