@@ -22,8 +22,8 @@ public class Matchmaking {
          *  the remaining element at the end of the result.
          *
          *
-         * @arrList1 first parameter - ArrayList<String>, EVEN indices
-         * @arrList2 second parameter - ArrayList<String>, ODD indices
+         * @param arrList1  first parameter - ArrayList<String>, EVEN indices
+         * @param arrList2  second parameter - ArrayList<String>, ODD indices
          *
          * @return the merged ArrayList<String> of the parameters
          */
