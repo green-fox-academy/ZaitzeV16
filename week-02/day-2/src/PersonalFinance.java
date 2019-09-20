@@ -27,14 +27,14 @@ public class PersonalFinance {
         //      What was the average amount of our spendings?
         // ======================================================================================
         // print the greeting to the user
-        greeting();
+        printGreeting();
 
         // call theBoss function - which does almost no work,
         //  just delegates tasks to other functions
-        theBoss(expenses);
+        theBossy(expenses);
     }
 
-    private static void theBoss(ArrayList<Integer> expenses) {
+    private static void theBossy(ArrayList<Integer> expenses) {
         /**
          * This function handles user input and
          *  decides which worker function is needed + calls it.
@@ -62,22 +62,22 @@ public class PersonalFinance {
         switch (userChoice) {
             case "A":
                 //      (A) How much did we spend?
-                int sum = sumExpenses(expenses);
+                int sum = getSumExpenses(expenses);
                 System.out.println("The sum of you expenses is: " + sum);
                 break;
             case "B":
                 //      (B) Which was our greatest expense?
-                int highest = highestExpenses(expenses);
+                int highest = getHighestExpenses(expenses);
                 System.out.println("Your highest expense was: " + highest);
                 break;
             case "C":
                 //      (C) Which was our cheapest spending?
-                int lowest = lowestExpense(expenses);
+                int lowest = getLowestExpense(expenses);
                 System.out.println("Your lowest expense was: " + lowest);
                 break;
             case "D":
                 //      (D) What was the average amount of our spendings?
-                double avg = avgExpense(expenses);
+                double avg = getAvgExpense(expenses);
                 System.out.println("Your average expense is: " + avg);
                 break;
             case "Q":
@@ -86,7 +86,7 @@ public class PersonalFinance {
         }
     }
 
-    private static double avgExpense(ArrayList<Integer> expenses) {
+    private static double getAvgExpense(ArrayList<Integer> expenses) {
         /**
          * This function takes an ArrayList<Integer> as parameter
          *  and calculates the AVERAGE of it's elements.
@@ -113,7 +113,7 @@ public class PersonalFinance {
         return result;
     }
 
-    private static int lowestExpense(ArrayList<Integer> expenses) {
+    private static int getLowestExpense(ArrayList<Integer> expenses) {
         /**
          * This function takes an ArrayList<Integer> as parameter
          *  and looks up the MINIMUM value.
@@ -127,7 +127,7 @@ public class PersonalFinance {
         return Collections.min(expenses);
     }
 
-    private static int highestExpenses(ArrayList<Integer> expenses) {
+    private static int getHighestExpenses(ArrayList<Integer> expenses) {
         /**
          * This function takes an ArrayList<Integer> as parameter
          *  and looks up the MAXIMUM value.
@@ -141,7 +141,7 @@ public class PersonalFinance {
         return Collections.max(expenses);
     }
 
-    private static int sumExpenses(ArrayList<Integer> expenses) {
+    private static int getSumExpenses(ArrayList<Integer> expenses) {
         /**
          * This function takes an ArrayList<Integer> as parameter
          *  and calculates the SUM of it's elements.
@@ -161,7 +161,7 @@ public class PersonalFinance {
         return result;
     }
 
-    private static void greeting() {
+    private static void printGreeting() {
         /**
          * This function prints the greeting message and the
          *  available options to the console.
