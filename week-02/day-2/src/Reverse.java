@@ -9,13 +9,21 @@ public class Reverse {
     }
 
     public static String myReverse(String toBeReversed) {
+        /**
+         * This function takes a String as parameter and reverses it
+         *  using StringBuilder.
+         *
+         *
+         * @param toBeReversed  a String which you would like to reverse
+         *
+         * @return String - the reversed version of the parameter
+         */
+
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = toBeReversed.length() - 1; i >= 0; i--) {
             stringBuilder.append(toBeReversed.charAt(i));
         }
-
-        String result = stringBuilder.toString();
-        return result;
+        return stringBuilder.toString();
     }
 }
