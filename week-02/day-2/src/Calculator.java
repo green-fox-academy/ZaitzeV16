@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Calculator {
@@ -22,7 +24,7 @@ public class Calculator {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Please type in the expression: ");
+        System.out.print("Please type in the expression (+ 3 3): ");
         String userInput = scanner.nextLine();
 
         System.out.println(calculate(userInput));
@@ -53,6 +55,12 @@ public class Calculator {
                 result = String.valueOf(operand1 % operand2);
                 break;
         }
+
+        // round to 3 decimal places
+        BigDecimal bd = new BigDecimal(Double.parseDouble(result));
+        bd = bd.setScale(3, RoundingMode.HALF_UP);
+        result = String.valueOf(bd);
+
         return result;
     }
 }
