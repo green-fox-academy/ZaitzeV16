@@ -26,19 +26,21 @@ public class GuessMyNumber {
          */
 
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
         int lives = 5;
         int guess = -1;
+
         int rangeMax = -1;
         int targetNumber = -1;
-        Random random = new Random();
 
-        System.out.println("Cheers!");
+        System.out.println("Let's play a game! :)");
         System.out.println("How hard would you like the game to be?");
-        System.out.println("(A) easy");
-        System.out.println("(B) normal");
-        System.out.println("(C) hard");
-        System.out.println("(D) don't you dare!!!");
+        System.out.println("\t(A) easy");
+        System.out.println("\t(B) normal");
+        System.out.println("\t(C) hard");
+        System.out.println("\t(D) don't you dare!!!");
+
 
         String option = scanner.next();
         if ("A".equals(option.toUpperCase())) {
@@ -52,8 +54,6 @@ public class GuessMyNumber {
         }
 
         targetNumber = random.nextInt(rangeMax);
-
-        System.out.println("Let's play a game! :)");
 
         while (lives > 0) {
             System.out.print("Please choose a number! ");
@@ -72,6 +72,8 @@ public class GuessMyNumber {
                 break;
             }
         }
-
+        if (lives == 0) {
+            System.out.println("You lost!");
+        }
     }
 }
