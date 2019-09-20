@@ -16,10 +16,5 @@ public class AppendLetter {
         }
         return far;
     }
-
-//    private static List<String> appendA(List<String> far) {
-//
-//        return result;
-//    }
 }
 
