@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.Map;
 
 public class ShoppingList2 {
     public static void main(String[] args) {
@@ -28,7 +27,7 @@ public class ShoppingList2 {
         productMap.put("Tomato", 2.58);
         productMap.put("Potato", 1.75);
         productMap.put("Onion", 1.10);
-
+        // ======================================================================================
         /*
         Represent Bob's shopping list
         _______________________________
@@ -51,7 +50,7 @@ public class ShoppingList2 {
         bobMap.put("Apples", 1);
         bobMap.put("Tomato", 2);
         bobMap.put("Potato", 1);
-
+        // ======================================================================================
         /*
         Represent Alice's shopping list
         _______________________________
@@ -68,7 +67,7 @@ public class ShoppingList2 {
         aliceMap.put("Chicken Breasts", 2);
         aliceMap.put("Apples", 1);
         aliceMap.put("Tomato", 10);
-
+        // ======================================================================================
         /*
         _______________________________
         Create an application which solves the following problems.
@@ -79,7 +78,7 @@ public class ShoppingList2 {
             Who buys more different products?
             Who buys more products? (piece)
          */
-
+        // ======================================================================================
         System.out.println("How much does Bob pay?");
         double bobExpense = 0.0;
         for (HashMap.Entry<String, Integer> myIter : bobMap.entrySet()) {
@@ -89,7 +88,7 @@ public class ShoppingList2 {
         }
         System.out.println("Bob pays: " + bobExpense);
         System.out.println();
-
+        // ======================================================================================
         System.out.println("How much does Alice pay?");
         double aliceExpense = 0.0;
         for (HashMap.Entry<String, Integer> myIter : aliceMap.entrySet()) {
@@ -99,40 +98,25 @@ public class ShoppingList2 {
         }
         System.out.println("Alice pays: " + aliceExpense);
         System.out.println();
-
+        // ======================================================================================
         System.out.println("Who buys more Rice?");
         String product1 = "Rice";
-        if (!bobMap.containsKey(product1) && aliceMap.containsKey(product1)) {
-            System.out.println("Alice buys more " + product1);
-        } else if (bobMap.containsKey(product1) && !aliceMap.containsKey(product1)) {
-            System.out.println("Bob buys more " + product1);
-        } else if (bobMap.get(product1) > aliceMap.get(product1)) {
-            System.out.println("Bob buys more " + product1);
-        } else if (bobMap.get(product1) < aliceMap.get(product1)) {
-            System.out.println("Alice buys more " + product1);
-        } else {
-            System.out.println("They buy the same amount of " + product1);
-        }
-        System.out.println();
 
+        whoBuysMore(bobMap, aliceMap, product1);
+
+        System.out.println();
+        // ======================================================================================
         System.out.println("Who buys more Potato?");
         String product2 = "Potato";
-        if (!bobMap.containsKey(product2) && aliceMap.containsKey(product2)) {
-            System.out.println("Alice buys more " + product2);
-        } else if (bobMap.containsKey(product2) && !aliceMap.containsKey(product2)) {
-            System.out.println("Bob buys more " + product2);
-        } else if (bobMap.get(product2) > aliceMap.get(product2)) {
-            System.out.println("Bob buys more " + product2);
-        } else if (bobMap.get(product2) < aliceMap.get(product2)) {
-            System.out.println("Alice buys more " + product2);
-        } else {
-            System.out.println("They buy the same amount of " + product2);
-        }
-        System.out.println();
 
+        whoBuysMore(bobMap, aliceMap, product2);
+
+        System.out.println();
+        // ======================================================================================
         System.out.println("Who buys more different products?");
         int bobProducts = bobMap.size();
         int aliceProducts = aliceMap.size();
+
         if (bobProducts > aliceProducts) {
             System.out.println("Bob buys more different products");
         } else if (bobProducts < aliceProducts) {
@@ -141,18 +125,20 @@ public class ShoppingList2 {
             System.out.println("They buy the same amount of different products");
         }
         System.out.println();
-
+        // ======================================================================================
         System.out.println("Who buys more products? (piece)");
         int bobItems = 0;
         int aliceItems = 0;
+
         // bob
-        for (HashMap.Entry<String, Integer> myIter : bobMap.entrySet()) {
-            bobItems += myIter.getValue();
+        for (int i : bobMap.values()) {
+            bobItems += i;
         }
         // alice
-        for (HashMap.Entry<String, Integer> myIter : aliceMap.entrySet()) {
-            aliceItems += myIter.getValue();
+        for (int i : aliceMap.values()) {
+            aliceItems += i;
         }
+
         if (bobItems > aliceItems) {
             System.out.println("Bob");
         } else if (bobItems < aliceItems) {
@@ -161,5 +147,53 @@ public class ShoppingList2 {
             System.out.println("Same number of items");
         }
         System.out.println();
+    }
+
+    private static void whoBuysMore(
+            HashMap<String, Integer> bobMap,
+            HashMap<String, Integer> aliceMap,
+            String product) {
+        /**
+         * This function takes 2 HashMap<String, Integer> as parameters
+         *  and 1 String, decides whether the hashmaps contain the 3. parameter.
+         * Compares the values of the found keys and prints the result.
+         *
+         *
+         * @param   bobMap - HashMap<String, Integer> - Bob's shopping list
+         * @param   aliceMap - HashMap<String, Integer> - Alice's shopping list
+         * @param   product - String - the product to search for in
+         *                  the first and second parameter
+         */
+        boolean bobHasProd = bobMap.containsKey(product);
+        boolean aliceHasProd = aliceMap.containsKey(product);
+
+        if (!bobHasProd) {
+            // Bob does not buy product
+            if (aliceHasProd) {
+                // Alice buys product
+                System.out.println("Alice buys more " + product);
+            } else {
+                // Alice does not buy product
+                System.out.println("No one buys " + product);
+            }
+        } else {
+            // Bob buys product
+            if (aliceHasProd) {
+                // Alice buys product
+                int bobQtyProd = bobMap.get(product);
+                int aliceQtyProd = aliceMap.get(product);
+
+                if (bobQtyProd > aliceQtyProd) {
+                    System.out.println("Bob buys more " + product);
+                } else if (bobQtyProd < aliceQtyProd) {
+                    System.out.println("Alice buys more " + product);
+                } else {
+                    System.out.println("They buy the same amount of " + product);
+                }
+            } else {
+                // Alice does not buy product
+                System.out.println("Bob buys more " + product);
+            }
+        }
     }
 }
