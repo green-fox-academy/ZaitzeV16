@@ -1,21 +1,29 @@
 public class Greet {
-    public static void main(String[] args) {
-        //  From now on, create the usual class wrapper
-        //  and main method on your own.
 
-        // - Create a string variable named `al` and assign the value `Green Fox` to it
-        // - Create a function called `greet` that greets it's input parameter
-        //     - Greeting is printing e.g. `Greetings dear, Green Fox`
-        // - Greet `al`
+  public static void main(String[] args) {
+    //  From now on, create the usual class wrapper
+    //  and main method on your own.
 
-        String al = "Green Fox";
+    // - Create a string variable named `al` and assign the value `Green Fox` to it
+    // - Create a function called `greet` that greets it's input parameter
+    //     - Greeting is printing e.g. `Greetings dear, Green Fox`
+    // - Greet `al`
 
-        String greetedMsg = greet(al);
+    String al = "Green Fox";
 
-        System.out.println(greetedMsg);
-    }
+    String greetedMsg = greet(al);
 
-    private static String greet(String user) {
-        return "Greetings dear, " + user + "!";
-    }
+    System.out.println(greetedMsg);
+  }
+
+  private static String greet(String user) {
+    /**
+     * This function takes a String as parameter
+     *  and prints a greeting to the console.
+     *
+     *
+     * @param user - String to be greeted
+     */
+    return "Greetings dear, " + user + "!";
+  }
 }
