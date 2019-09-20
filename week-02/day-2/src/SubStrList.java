@@ -19,7 +19,7 @@ public class SubStrList {
                 return i;
             }
         }
-        
+
         return -1;
     }
 }

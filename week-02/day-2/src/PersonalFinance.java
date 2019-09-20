@@ -9,7 +9,7 @@ public class PersonalFinance {
     public static void main(String[] args) {
         // Personal finance
         // We are going to represent our expenses in a list containing integers.
-
+        // ======================================================================================
         // Create a list with the following items.
         //      500, 1000, 1250, 175, 800 and 120
         ArrayList<Integer> expenses = new ArrayList<>();
@@ -19,23 +19,46 @@ public class PersonalFinance {
         expenses.add(175);
         expenses.add(800);
         expenses.add(120);
-
+        // ======================================================================================
         // Create an application which solves the following problems.
         //      How much did we spend?
         //      Which was our greatest expense?
         //      Which was our cheapest spending?
         //      What was the average amount of our spendings?
+        // ======================================================================================
+        // print the greeting to the user
+        greeting();
+
+        // call theBoss function - which does almost no work,
+        //  just delegates tasks to other functions
+        theBoss(expenses);
+    }
+
+    private static void theBoss(ArrayList<Integer> expenses) {
+        /**
+         * This function handles user input and
+         *  decides which worker function is needed + calls it.
+         *  - keeps asking the user for proper input.
+         *
+         * @param   expenses    ArrayList<Integer> of the expenses
+         */
 
         String[] options = {"A", "B", "C", "D", "Q"};
         Scanner scanner = new Scanner(System.in);
 
-        // print the greeting to the user
-        greeting();
         String userChoice = scanner.next().toUpperCase();
 
+        // while the user input is not in the options elements
+        //  keep asking the user for proper input
         while (!Arrays.asList(options).contains(userChoice)) {
+            System.out.println("Sorry, I did not understand, could you try again please?");
+            System.out.println("...with one of the given options...");
             userChoice = scanner.next().toUpperCase();
         }
+
+        // if proper input was given, call the corresponding function
+        //  to do the work
+        // print the return value of the worker
         switch (userChoice) {
             case "A":
                 //      (A) How much did we spend?
@@ -64,6 +87,16 @@ public class PersonalFinance {
     }
 
     private static double avgExpense(ArrayList<Integer> expenses) {
+        /**
+         * This function takes an ArrayList<Integer> as parameter
+         *  and calculates the AVERAGE of it's elements.
+         *
+         *
+         * @param   expenses    ArrayList<Integer>
+         *
+         * @return Double - AVERAGE of the elements inside the parameter
+         */
+
         double result = 0.0;
 
         for (int expense : expenses) {
@@ -81,14 +114,44 @@ public class PersonalFinance {
     }
 
     private static int lowestExpense(ArrayList<Integer> expenses) {
+        /**
+         * This function takes an ArrayList<Integer> as parameter
+         *  and looks up the MINIMUM value.
+         *
+         *
+         * @param   expenses    ArrayList<Integer>
+         *
+         * @return Integer - the MINIMUM value of the given parameter's elements
+         */
+
         return Collections.min(expenses);
     }
 
     private static int highestExpenses(ArrayList<Integer> expenses) {
+        /**
+         * This function takes an ArrayList<Integer> as parameter
+         *  and looks up the MAXIMUM value.
+         *
+         *
+         * @param   expenses    ArrayList<Integer>
+         *
+         * @return Integer - the MAXIMUM value of the given parameter's elements
+         */
+
         return Collections.max(expenses);
     }
 
     private static int sumExpenses(ArrayList<Integer> expenses) {
+        /**
+         * This function takes an ArrayList<Integer> as parameter
+         *  and calculates the SUM of it's elements.
+         *
+         *
+         * @param   expenses    ArrayList<Integer>
+         *
+         * @return Integer - SUM of the elements inside the parameter
+         */
+
         int result = 0;
 
         for (int expense : expenses) {
@@ -99,6 +162,11 @@ public class PersonalFinance {
     }
 
     private static void greeting() {
+        /**
+         * This function prints the greeting message and the
+         *  available options to the console.
+         */
+
         String welcome = "Greetings!\n" +
                 "What would you like to do?\n" +
                 "\t(A) - Sum of expenses\n" +
