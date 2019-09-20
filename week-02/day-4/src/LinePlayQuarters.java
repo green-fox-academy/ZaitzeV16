@@ -36,15 +36,15 @@ public class LinePlayQuarters {
                 int[] bottomRight = column[2];
                 int[] bottomLeft = column[3];
 
-                linePlay(topLeft, topRight, bottomRight, bottomLeft, lineStep, graphics);
+                drawLinePlay(topLeft, topRight, bottomRight, bottomLeft, lineStep, graphics);
             }
         }
 
     }
 
-    private static void linePlay(int[] topLeft, int[] topRight,
-                                 int[] bottomRight, int[] bottomLeft,
-                                 int stepHeight, Graphics graphics) {
+    private static void drawLinePlay(int[] topLeft, int[] topRight,
+                                     int[] bottomRight, int[] bottomLeft,
+                                     int stepHeight, Graphics graphics) {
         /*    0           1
         {top left X, top left Y},
         {top right X, top right Y},
@@ -123,7 +123,6 @@ public class LinePlayQuarters {
                 result[row][column][3][1] = stepHeight * (row + 1);
             }
         }
-
         return result;
     }
 
