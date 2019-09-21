@@ -109,7 +109,7 @@ public class FunctionToCenter {
 
   private static void setRandomColor(Graphics graphics) {
     /**
-     * This function sets the next to-be-drawn item's color to random).
+     * This function sets the next to-be-drawn item's color to random.
      *
      *
      * @param random    Random   - instance of the Random class
