@@ -38,7 +38,7 @@ public class PurpleSteps {
      * @param numberOfSteps     int      - number of stair-steps
      * @param graphics          Graphics - needed for the canvas (to draw and set color)
      */
-    
+
     int height = width;
     int x, y;
 
