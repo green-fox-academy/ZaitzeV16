@@ -61,7 +61,7 @@ public class CenterBoxFunction {
 
   private static void setRandomColor(Random random, Graphics graphics) {
     /**
-     * This function sets the next to-be-drawn item's color to random).
+     * This function sets the next to-be-drawn item's color to random.
      *
      *
      * @param random    Random   - instance of the Random class
