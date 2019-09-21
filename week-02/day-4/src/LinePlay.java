@@ -7,14 +7,21 @@ public class LinePlay {
 
   public static void mainDraw(Graphics graphics) {
     int step = 20;
-    int limit = WIDTH;
 
-    createTopRight(step, limit, graphics);
-    crateBottomLeft(step, limit, graphics);
-
+    createTopRight(step, graphics);
+    crateBottomLeft(step, graphics);
   }
 
-  private static void crateBottomLeft(int step, int limit, Graphics graphics) {
+  private static void crateBottomLeft(int step, Graphics graphics) {
+    /**
+     * This function creates a GREEN ..... in the lower left corner.
+     *  Object ..... = {see for your self};
+     *
+     *
+     * @param step      int      - number of pixels between line starting points
+     * @param graphics  Graphics - needed for the canvas (to draw, set color)
+     */
+
     int xRunnerX0 = 0;
     int xRunnerY0 = HEIGHT;
 
@@ -26,7 +33,7 @@ public class LinePlay {
 
     graphics.setColor(Color.GREEN);
 
-    for (int i = 0; i < limit / step; i++) {
+    for (int i = 0; i < WIDTH / step; i++) {
       xRunnerX = xRunnerX0 + (i * step);
       yRunnerY = yRunnerY0 + (i * step);
 
@@ -34,7 +41,16 @@ public class LinePlay {
     }
   }
 
-  private static void createTopRight(int step, int limit, Graphics graphics) {
+  private static void createTopRight(int step, Graphics graphics) {
+    /**
+     * This function creates a PURPLE ..... in the lower left corner.
+     *  Object ..... = {see for your self};
+     *
+     *
+     * @param step      int      - number of pixels between line starting points
+     * @param graphics  Graphics - needed for the canvas (to draw, set color)
+     */
+
     int xRunnerX0 = WIDTH - step;
     int xRunnerY0 = 0;
 
@@ -46,7 +62,7 @@ public class LinePlay {
 
     graphics.setColor(new Color(200, 0, 200));
 
-    for (int i = 0; i < limit / step; i++) {
+    for (int i = 0; i < WIDTH / step; i++) {
       xRunnerX = xRunnerX0 - (i * step);
       yRunnerY = yRunnerY0 - (i * step);
 
