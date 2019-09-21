@@ -69,9 +69,11 @@ public class CenterBoxFunction {
      */
 
     graphics.setColor(new Color(
-      random.nextInt(256),
-      random.nextInt(256),
-      random.nextInt(256)));
+        random.nextInt(256),
+        random.nextInt(256),
+        random.nextInt(256)
+      )
+    );
   }
 
   private static void drawCenteredSquare(int width, Graphics graphics) {
