@@ -1,22 +1,23 @@
 public class TakesLonger {
-    public static void main(String... args) {
-        String quote = "Hofstadter's Law: It you expect, even when you take into account Hofstadter's Law.";
 
-        // When saving this quote a disk error has occured. Please fix it.
-        // Add "always takes longer than" to the StringBuilder (quote) between the words "It" and "you"
-        // Using pieces of the quote variable (instead of just redefining the string)
+  public static void main(String... args) {
+    String quote = "Hofstadter's Law: It you expect, even when you take into account Hofstadter's Law.";
 
-        String toBeInserted = "always takes longer than".concat(" ");
+    // When saving this quote a disk error has occured. Please fix it.
+    // Add "always takes longer than" to the StringBuilder (quote) between the words "It" and "you"
+    // Using pieces of the quote variable (instead of just redefining the string)
 
-        // init stringbuilder
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(quote);
+    String toBeInserted = "always takes longer than".concat(" ");
 
-        int targetIndex = stringBuilder.indexOf("you");
-        stringBuilder.insert(targetIndex, toBeInserted);
+    // init stringbuilder
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(quote);
 
-        quote = stringBuilder.toString();
+    int targetIndex = stringBuilder.indexOf("you");
+    stringBuilder.insert(targetIndex, toBeInserted);
 
-        System.out.println(quote);
-    }
+    quote = stringBuilder.toString();
+
+    System.out.println(quote);
+  }
 }
