@@ -22,6 +22,8 @@ public class CopyFile {
      *
      *      Exception:
      *                IOException - return false
+     *
+     * @return true if copy was successful, false if IOException
      */
 
     try {
