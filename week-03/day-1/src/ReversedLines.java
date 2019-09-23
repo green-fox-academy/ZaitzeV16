@@ -11,12 +11,12 @@ public class ReversedLines {
 
     // using file opener function from previous exercise Doubled class
     ArrayList<String> content = Doubled.getFileContent(path);
-    ArrayList<String> reversedContent = removeDuplicates(content);
+    ArrayList<String> reversedContent = reverseStringOrder(content);
 
     System.out.println(String.join("\n", reversedContent));
   }
 
-  private static ArrayList<String> removeDuplicates(ArrayList<String> content) {
+  private static ArrayList<String> reverseStringOrder(ArrayList<String> content) {
     /**
      * This function takes an ArrayList<String> as parameter,
      *  iterates through each item and reverses the order of each item
@@ -28,7 +28,7 @@ public class ReversedLines {
      *
      * @return ArrayList<String> - reversed order String withing the parameter
      */
-    
+
     ArrayList<String> result = new ArrayList<>();
     StringBuilder stringBuilder = new StringBuilder();
 
