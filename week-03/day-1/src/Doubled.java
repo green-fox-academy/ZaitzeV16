@@ -55,7 +55,7 @@ public class Doubled {
     return result;
   }
 
-  private static ArrayList<String> getFileContent(Path path) {
+  public static ArrayList<String> getFileContent(Path path) {
     /**
      * This function takes a path as parameter, opens it
      *  and returns the files content.
