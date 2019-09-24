@@ -29,6 +29,19 @@ public class Births {
   }
 
   private static String analyzeCSV(List<String> content) {
+    /**
+     * This function takes a path as parameter, opens it
+     *  and returns the files content.
+     *
+     *
+     * @param   content  List<String> - specific list of strings
+     *     <person name>;<birthdate in YYYY-MM-DD format>;<city name>
+     *
+     * @return String - the year in which the most people were born according to
+     *                  the provided births.csv file
+     *                  return null if parameter content is empty
+     */
+
     if (content == null) {
       System.out.println("Content is empty!");
       return null;
@@ -56,6 +69,21 @@ public class Births {
   }
 
   private static List<String> openCSV(Path path) {
+    /**
+     * This function takes a path as parameter, opens it
+     *  and returns the files content.
+     *
+     *      Exception:
+     *                IOException - return null
+     *
+     *
+     * @param   path  Path - path of the file you would like
+     *                       to copy the content of
+     *
+     * @return List <String> - content of the file found at 'path',
+     *                         if IOException - return null
+     */
+
     try {
       return Files.readAllLines(path);
     } catch (IOException e) {
