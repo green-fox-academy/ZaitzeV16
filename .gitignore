@@ -76,8 +76,8 @@ fabric.properties
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
 *.iml
-modules.xml
-.idea/misc.xml
+*modules.xml
+*.idea*
 *.ipr
 
 # Sonarlint plugin
@@ -89,6 +89,9 @@ modules.xml
 
 # Log file
 *.log
+
+# Text files
+*.txt
 
 # BlueJ files
 *.ctxt
