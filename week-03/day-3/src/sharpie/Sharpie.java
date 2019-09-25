@@ -17,10 +17,10 @@ public class Sharpie {
   float inkAmount;
 
   // constructors
-  public Sharpie(String color, float width) {
+  public Sharpie(String color, float inkAmount) {
     this.color = color;
-    this.width = width;
-    this.inkAmount = 100;
+    this.width = 100;
+    this.inkAmount = inkAmount;
   }
 
   // functions
