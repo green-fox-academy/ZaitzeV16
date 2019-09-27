@@ -1,6 +1,6 @@
 # [Vim 4 life](https://github.com/green-fox-academy/ZaitzeV16.git)
 
-### Links for todays other repositories (2019.09.11.)
+### Links for today's other repositories (2019.09.11.)
 
 * hello-world
 https://github.com/ZaitzeV16/hello-world.gi://github.com/ZaitzeV16/hello-world.git
