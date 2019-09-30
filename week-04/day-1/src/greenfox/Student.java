@@ -73,10 +73,12 @@ public class Student extends Person {
   }
 
   // override methods
+  @Override
   public void getGoal() {
     System.out.println("My goal is: Be a junior software developer.");
   }
 
+  @Override
   public void introduce() {
     System.out.println(
         "Hi, I'm " + this.getName() +
