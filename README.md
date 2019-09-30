@@ -1,15 +1,14 @@
-# [Vim 4 life](https://github.com/green-fox-academy/ZaitzeV16.git)
+# [ZaitzeV16 - Green Fox Academy repo](https://github.com/green-fox-academy/ZaitzeV16.git)
 
-### Links for today's other repositories (2019.09.11.)
 
-* hello-world
-https://github.com/ZaitzeV16/hello-world.gi://github.com/ZaitzeV16/hello-world.git
+[GFA - Chama - ZigZag cheat sheets](https://github.com/ZaitzeV16/ZigZagCheatSheet)
 
-* git-lesson-repository
-https://github.com/ZaitzeV16/git-lesson-repository.git
+### Links for today's other (exercise's) repositories (2019.09.11.)
 
-* patchwork
-https://github.com/ZaitzeV16/patchwork.git
+* [hello-world](https://github.com/ZaitzeV16/hello-world)
+
+* [git-lesson-repository](https://github.com/ZaitzeV16/git-lesson-repository.git)
+
+* [patchwork](https://github.com/ZaitzeV16/patchwork.git)
 
 * [Github.io](https://zaitzev16.github.io./)
-https://github.com/ZaitzeV16/ZaitzeV16.github.io.git
