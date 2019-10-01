@@ -1,6 +1,8 @@
 package zoo;
 
-public class Bird extends Animal {
+import flyable.Flyable;
+
+public class Bird extends Animal implements Flyable {
 
   // fields
   private boolean hasFathers;
@@ -27,5 +29,20 @@ public class Bird extends Animal {
   @Override
   public void makeNoise() {
     System.out.println("chirp-chirp");
+  }
+
+  @Override
+  public void land() {
+    System.out.println("Bird is landing...");
+  }
+
+  @Override
+  public void fly() {
+    System.out.println("Bird is flying...");
+  }
+
+  @Override
+  public void takeOff() {
+    System.out.println("Bird is taking off...");
   }
 }
