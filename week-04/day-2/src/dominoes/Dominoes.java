@@ -18,6 +18,11 @@ public class Dominoes {
     System.out.println(dominoes);
     Collections.sort(dominoes);
     System.out.println(dominoes);
+
+    System.out.println("===============");
+    for (Domino d : dominoes) {
+      d.printAllFields();
+    }
   }
 
   static List<Domino> initializeDominoes() {

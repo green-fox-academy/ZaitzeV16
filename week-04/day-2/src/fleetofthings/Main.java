@@ -31,5 +31,10 @@ public class Main {
     System.out.println(todoList.toString());
     Collections.sort(todoList);
     System.out.println(todoList.toString());
+
+    System.out.println("===============");
+    for (Thing t : todoList) {
+      t.printAllFields();
+    }
   }
 }
