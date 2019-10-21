@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
@@ -58,7 +61,7 @@ public class SWCharacterAnalyzer {
         ))
         .entrySet()
         .stream()
-        .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+        .sorted(Collections.reverseOrder(Entry.comparingByValue()))
         .limit(1)
         .collect(Collectors.toList())
         .get(0)
@@ -90,27 +93,28 @@ public class SWCharacterAnalyzer {
         .average()
         .orElse(-1);
     System.out.println("Average height of the female characters: " + avgHeightOfFemales);
+    System.out.println("===================================");
 
     /*
     - 💪 Get the age distribution of the characters by gender (where the gender can
       be "male", "female" and "other")
       - The age groups are: "below 21", "between 21 and 40", "above 40" and
         "unknown"
-      - The result should be a `Map<String, Map<String, Integer>>
+      - The result should be a Map<String, Map<String, Integer>>
      */
-//    Map<String, Map<String, Integer>> ageDistribution = sWCharacters
-//        .entrySet()
-//        .stream()
-//        .flatMap(item -> item.)
-//        .collect(
-//            Collectors.toMap(
-//                Collectors.groupingBy(
-//                    strings -> strings[7],
-//                    Collectors.groupingBy()
-//                )
-//            )
-//        );
-//
-//    System.out.println("Average height of the female characters: " + avgHeightOfFemales);
+    List<String> wantedGenders = List.of("male", "female", "other");
+    List<String> ageGroups = List.of("below 21", "between 21 and 40", "above 40", "unknown");
+
+    Map<String, Map<String, Long>> partialResult =
+        sWCharacters
+            .values()
+            .stream()
+            .collect(Collectors.groupingBy(
+                item -> item[7],
+                Collectors.groupingBy(
+                    subItem -> subItem[6].replace("BBY", ""),
+                    Collectors.counting()
+                )));
+    System.out.println(partialResult);
   }
 }
