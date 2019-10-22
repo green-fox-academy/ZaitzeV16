@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div th:switch="${counter}">
+  <div th:case="'0'">
+    <p style="font-size:12px;" th:text="${msg}"></p>
+  </div>
+  <div th:case="1">
+    <p style="font-size:24px;" th:text="${msg}"></p>
+  </div>
+  <div th:case="2">
+    <p style="font-size:48px;" th:text="${msg}"></p>
+  </div>
+  <div th:case="3">
+    <p style="font-size:72px;" th:text="${msg}"></p>
+  </div>
+</div>
+</body>
+</html>
