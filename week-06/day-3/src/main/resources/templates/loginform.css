@@ -41,7 +41,7 @@ a {
   text-align: right;
 }
 
-button {
+button[type="submit"]{
   margin-top: 60px;
   margin-bottom: 30px;
   border-radius: 20px;
