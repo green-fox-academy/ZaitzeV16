@@ -1,0 +1,98 @@
+body {
+  margin-top: 5px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+div[id="header"] {
+  width: 100%;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+p[id="header_left"] {
+  float: left;
+}
+
+p[id="header_right"] {
+  float: right;
+  text-align: right;
+}
+
+p[id="header_left"],
+p[id="header_right"] {
+  color: deepskyblue;
+  border-bottom: deepskyblue 2px solid;
+  width: 50%;
+}
+
+div[id="categories"] {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+a[class="category"] {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: white;
+  background-color: red;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+div[id="search_bar"] {
+  padding: 25px 0 25px 0;
+}
+
+button[class="search_button"] {
+  font-size: 24px;
+  color: white;
+  background-color: red;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 0;
+  width: 20%;
+}
+
+input[class="block"],
+label[class="block"] {
+  display: block;
+}
+
+input[id="search_field"] {
+  border: red 2px solid;
+  width: 35%;
+}
+
+label[class="block"] {
+  color: red;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: deepskyblue;
+  border: white 1px solid;
+  border-collapse: collapse;
+  font-size: 24px;
+  padding: 15px 6px 15px 6px;
+}
+
+td {
+  padding: 20px 0 20px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+td[class="qty"],
+td[class="price"] {
+  text-align: center;
+}
+
+td[class="price"]:after {
+  content: "Kč";
+}

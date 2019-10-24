@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+<!--    <link rel="stylesheet" href="../static/css/style.css" type="text/css">-->
+  </head>
+  <body>
+
+  <div id="header">
+    <p id="header_left">My Shop</p>
+    <p id="header_right">More>></p>
+  </div>
+
+  <div id="categories">
+    <a class="category">Clothes and Shoes</a>
+    <a class="category">Electronics</a>
+    <a class="category">Beverages and snacks</a>
+    <a class="category">Euro</a>
+    <a class="category">Original currency</a>
+  </div>
+
+  <div id="search_bar">
+    <button class="search_button">Above</button>
+    <button class="search_button">Below</button>
+    <button class="search_button">Exactly</button>
+    <label class="block" for="search_field">Filter by price:</label>
+    <input class="block" type="search" id="search_field" placeholder="...e.g.: 300">
+  </div>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Qty of stock</th>
+    </tr>
+    <tr th:each="item: ${items}">
+      <td th:text="${item.getName()}"></td>
+      <td th:text="${item.getType()}"></td>
+      <td th:text="${item.getDescription()}"></td>
+      <td class="price" th:text="${item.getPrice()}"><br></td>
+      <td class="qty" th:text="${item.getQuantityOfStock()}"></td>
+    </tr>
+
+  </table>
+  </body>
+</html>
