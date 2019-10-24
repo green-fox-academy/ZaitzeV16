@@ -1,0 +1,24 @@
+caption {
+  font-family: "Arial Black", serif;
+}
+
+table, th, td, tr{
+  border: red 2px solid;
+  border-collapse: collapse;
+  width: 500px;
+}
+
+td, th{
+  border-radius: 2px;
+}
+
+th {
+  background-color: #141414;
+  color: aliceblue;
+  text-align: left;
+  border-bottom: gray 3px solid;
+}
+
+tr:nth-child(2n+2) {
+  background-color: gray;
+}
