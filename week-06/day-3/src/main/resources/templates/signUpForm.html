@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="signUpFormStyle.css" type="text/css">
+  </head>
+  <body>
+  <div id="sign_up_form_div">
+    <table>
+      <tr>
+        <td id="new">
+          <form id="sign_up_form" action=https://newsletter-ws.herokuapp.com/register method="post">
+            <label for="sign_up_form" id="sign_up_form_label">Sign Up</label>
+
+            <input type="text" name="name" placeholder="Username" required autofocus>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="passwordConfirmation" placeholder="Retype password"
+                   required>
+
+            <button type="submit">Sign me up</button>
+          </form>
+        </td>
+
+        <td id="or">
+          <button name="or" disabled>OR</button>
+        </td>
+
+        <td id="old">
+          <button class="remote login" name="facebook" disabled>Log in with Facebook</button>
+          <button class="remote login" name="twitter" disabled>Log in with Twitter</button>
+          <button class="remote login" name="google" disabled>Log in with Google+</button>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+  </body>
+</html>
