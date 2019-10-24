@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="newsletter.css" type="text/css">
+</head>
+<body>
+<div id="login_form_div" method="POST">
+  <form action="https://newsletter-ws.herokuapp.com/signup">
+    <label for="name">Name</label>
+    <input type="text" id="name" required autofocus>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+
+    <a href="https://i.imgflip.com/2optxq.jpg">Forgot Password?</a>
+
+    <input type="submit" id="submit_form" value="Submit">
+  </form>
+</div>
+</body>
+</html>
