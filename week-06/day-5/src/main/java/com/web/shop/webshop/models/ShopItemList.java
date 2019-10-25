@@ -58,9 +58,4 @@ public class ShopItemList {
             1)
     );
   }
-
-  public void addItem(ShopItem shopItem) {
-    this.itemList.add(shopItem);
-  }
-
 }

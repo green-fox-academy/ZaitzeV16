@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  </head>
+  <body>
+
+    <div id="full_search_bar" th:fragment="full_search_bar">
+      <div th:insert="fragments/search :: price_search_bar"></div>
+      <div id="filter_bar">
+        <div class="filter" th:insert="fragments/search :: only_available"></div>
+        <div class="filter" th:insert="fragments/search :: cheapest_first"></div>
+        <div class="filter" th:insert="fragments/search :: contains_nike"></div>
+        <div class="filter" th:insert="fragments/search :: average_stock"></div>
+        <div class="filter" th:insert="fragments/search :: most_expensive"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

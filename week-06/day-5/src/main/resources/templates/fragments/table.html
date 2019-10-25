@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  </head>
+  <body>
+
+  <div th:fragment="item_table">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Qty of stock</th>
+      </tr>
+      <tr th:each="item: ${items}">
+        <td th:text="${item.getName()}"></td>
+        <td th:text="${item.getType()}"></td>
+        <td th:text="${item.getDescription()}"></td>
+        <td class="price" th:text="${item.getPrice()}"><br></td>
+        <td class="qty" th:text="${item.getQuantityOfStock()}"></td>
+      </tr>
+    </table>
+  </div>
+
+  </body>
+</html>

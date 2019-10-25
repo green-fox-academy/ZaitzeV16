@@ -1,6 +1,6 @@
 package com.web.shop.webshop.models;
 
-public class ShopItem {
+public class ShopItem implements Comparable<ShopItem> {
 
   private String name;
   private String type;
@@ -34,5 +34,10 @@ public class ShopItem {
 
   public int getQuantityOfStock() {
     return quantityOfStock;
+  }
+
+  @Override
+  public int compareTo(ShopItem shopItem) {
+    return Double.compare(this.price, shopItem.price);
   }
 }

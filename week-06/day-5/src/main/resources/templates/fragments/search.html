@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  </head>
+  <body>
+
+    <div th:fragment="price_search_bar">
+      <form id="price_search_bar" action="/" method="post">
+        <button class="non_header_submit_button" type="submit" name="action" value="above">Above</button>
+        <button class="non_header_submit_button" type="submit" name="action" value="below">Below</button>
+        <button class="non_header_submit_button" type="submit" name="action" value="exactly">Exactly</button>
+        <label class="block" for="search_field">Filter by price:</label>
+        <input class="block" type="search" name="pattern" id="search_field" placeholder="...e.g.: 300">
+      </form>
+    </div>
+
+    <div th:fragment="only_available">
+      <form id="only_available" action="/only-available" method="get">
+        <button class="filter_button" type="submit" name="only_available">Available</button>
+      </form>
+    </div>
+
+    <div th:fragment="cheapest_first">
+      <form id="cheapest_first" action="/cheapest-first" method="get">
+        <button class="filter_button" type="submit" name="cheapest_first">Cheapest first</button>
+      </form>
+    </div>
+
+    <div th:fragment="contains_nike">
+      <form id="contains_nike" action="/contains-nike" method="get">
+        <button class="filter_button" type="submit" name="contains_nike">Nike</button>
+      </form>
+    </div>
+
+    <div th:fragment="average_stock">
+      <form id="average_stock" action="/average-stock" method="get">
+        <button class="filter_button" type="submit" name="average_stock">Average stock</button>
+      </form>
+    </div>
+
+    <div th:fragment="most_expensive">
+      <form id="most_expensive" action="/most-expensive" method="get">
+        <button class="filter_button" type="submit" name="most_expensive">Most expensive</button>
+      </form>
+    </div>
+
+  </body>
+</html>
