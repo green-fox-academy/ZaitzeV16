@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BOSController {
+
   private List<BankAccount> accounts;
 
   public BOSController() {
@@ -33,8 +33,9 @@ public class BOSController {
   }
 
   @GetMapping(value = "/htmlception")
-  @ResponseBody
-  public String showHTMLCeption() {
-    return "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
+  public String showHTMLCeption(Model model) {
+    model.addAttribute("html1", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+    model.addAttribute("html2", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+    return "html_ception";
   }
 }
