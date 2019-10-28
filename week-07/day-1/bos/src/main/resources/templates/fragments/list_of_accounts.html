@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <body>
+  <div th:fragment="list_accounts">
+    <ul th:each="account: ${accounts}">
+      <li th:text=
+              "|
+              Account for ${account.getName()}
+              with a balance of ${account.getBalance()}
+              with a type of ${account.getAnimalType()}
+              |"></li>
+    </ul>
+  </div>
+
+  </body>
+</html>
