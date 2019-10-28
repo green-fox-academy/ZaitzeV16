@@ -13,9 +13,9 @@ public class BankAccount {
 
   public BankAccount(String name, float balance, String animalType) {
     this.name = name;
-
     this.balance = balance;
-    this.animalType = animalType;
+    this.animalType =
+        Character.toUpperCase(animalType.charAt(0)) + animalType.substring(1).toLowerCase();
   }
 
   public String getName() {

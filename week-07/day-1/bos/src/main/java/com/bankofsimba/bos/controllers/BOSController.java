@@ -3,6 +3,7 @@ package com.bankofsimba.bos.controllers;
 import com.bankofsimba.bos.models.BankAccount;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,10 @@ public class BOSController {
   public BOSController() {
     this.accounts = new ArrayList<>();
     this.addBankAccount("Simba", 2000, "lion");
+    this.addBankAccount("Mufasa", 99999, "lion");
+    this.addBankAccount("Timon", 2000, "fat");
+    this.addBankAccount("Aladdin", 0, "noob");
+    this.addBankAccount("Shrek", 1, "green");
   }
 
   public void addBankAccount(String name, float balance, String animalType) {
@@ -24,6 +29,17 @@ public class BOSController {
   @GetMapping(value = {"", "/"})
   public String showDefault() {
     return "index";
+  }
+
+  @GetMapping(value = "/simba")
+  public String showSimba(Model model) {
+    model.addAttribute(
+        "accounts",
+        this.accounts
+            .stream()
+            .filter(acc -> acc.getName().equals("Simba"))
+            .collect(Collectors.toList()));
+    return "show_simba";
   }
 
   @GetMapping(value = "/show")
