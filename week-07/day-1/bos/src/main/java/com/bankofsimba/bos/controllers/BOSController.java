@@ -15,15 +15,15 @@ public class BOSController {
 
   public BOSController() {
     this.accounts = new ArrayList<>();
-    this.addBankAccount("Simba", 2000, "lion");
-    this.addBankAccount("Mufasa", 99999, "lion");
-    this.addBankAccount("Timon", 2000, "fat");
-    this.addBankAccount("Aladdin", 0, "noob");
-    this.addBankAccount("Shrek", 1, "green");
+    this.addBankAccount("Simba", 2000, "lion", true);
+    this.addBankAccount("Mufasa", 99999, "lion", true);
+    this.addBankAccount("Timon", 2000, "fat", false);
+    this.addBankAccount("Aladdin", 0, "noob", true);
+    this.addBankAccount("Shrek", 1, "green", false);
   }
 
-  public void addBankAccount(String name, float balance, String animalType) {
-    this.accounts.add(new BankAccount(name, balance, animalType));
+  public void addBankAccount(String name, float balance, String animalType, boolean isKing) {
+    this.accounts.add(new BankAccount(name, balance, animalType, isKing));
   }
 
   @GetMapping(value = {"", "/"})
