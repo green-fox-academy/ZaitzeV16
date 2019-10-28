@@ -7,8 +7,8 @@
       <li th:text=
               "|
               Account for ${account.getName()}
-              with a balance of ${account.getBalance()}
-              with a type of ${account.getAnimalType()}
+              ${#numbers.formatDecimal(account.getBalance(), 3, 2, 'POINT')}
+              ${account.getAnimalType()}
               |"></li>
     </ul>
   </div>

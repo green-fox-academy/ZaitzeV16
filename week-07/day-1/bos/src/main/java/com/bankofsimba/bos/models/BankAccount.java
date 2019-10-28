@@ -1,5 +1,7 @@
 package com.bankofsimba.bos.models;
 
+import java.math.BigDecimal;
+
 public class BankAccount {
 
   private String name;
@@ -11,6 +13,7 @@ public class BankAccount {
 
   public BankAccount(String name, float balance, String animalType) {
     this.name = name;
+
     this.balance = balance;
     this.animalType = animalType;
   }
