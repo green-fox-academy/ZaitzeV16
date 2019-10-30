@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Green Fox Academy</title>
+</head>
+<body>
+
+  <form method="post" th:action="@{/gfa/check}">
+    <label for="student_name">Check if student already at GFA</label>
+    <input type="text" id="student_name" name="name">
+    <button type="submit">Submit</button>
+  </form>
+  <div th:if="${check_student_msg} != null">
+    <span
+        th:if="${check_student_msg} == true"
+        th:text="${name} + ' already exists'">asdasd
+    </span>
+    <span
+        th:if="${check_student_msg} == false"
+        th:text="${name} + ' does not exist'">asd
+    </span>
+  </div>
+
+  <div>
+    <a th:href="@{/gfa}">To main page</a>
+  </div>
+
+</body>
+</html>

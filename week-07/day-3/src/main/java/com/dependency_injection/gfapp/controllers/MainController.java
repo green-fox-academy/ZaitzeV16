@@ -36,8 +36,21 @@ public class MainController {
   }
 
   @PostMapping(value = "/gfa/save")
-  public String saveStudent(@RequestParam(name = "name") String student_name) {
-    this.studentService.save(student_name);
+  public String saveStudent(@RequestParam(name = "name") String name) {
+    this.studentService.save(name);
     return "redirect:/gfa/list";
+  }
+
+  @GetMapping(value = "/gfa/check")
+  public String checkStudent() {
+    return "gfa_student_check";
+  }
+
+  @PostMapping(value = "/gfa/check")
+  public String sendCheckStudent(@RequestParam(name = "name") String student_name, Model model) {
+    boolean isIn = this.studentService.checkIfStudentExists(student_name);
+    model.addAttribute("check_student_msg", isIn);
+    model.addAttribute("name", student_name);
+    return "gfa_student_check";
   }
 }
