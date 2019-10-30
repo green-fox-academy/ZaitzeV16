@@ -19,7 +19,8 @@ public class MainController {
   }
 
   @GetMapping(value = {"/", "/gfa"})
-  public String showGreenFox() {
+  public String showGreenFox(Model model) {
+    model.addAttribute("studentCount", this.studentService.countStudents());
     return "gfa_index";
   }
 
