@@ -1,6 +1,7 @@
 package com.dependency_injection.di.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import org.springframework.stereotype.Service;
 
@@ -24,20 +25,29 @@ public class UtilityService {
     return colors.get(random.nextInt(colors.size()));
   }
 
-// ## Colored Background
-// - Have an endpoint `/useful/colored`
-//     - should display an empty page with a random color background
+  // ## Email validator
+  // - Endpoint at `/useful/email` with a queryparam
+  // - Have a link at the main page to an example: `/useful/email?email=is@this.valid`
+  // - Create a `validateEmail` method in the `UtilityService`
+  //     - check if the string contains a `@` and a `.`
+  // - Display the following to the user
+  //     - `is@this.valid is a valid email address` in green
+  //     - `not_valid_email.com is not a valid email address` in red
 
-// ## Email validator
-// - Endpoint at `/useful/email` with a queryparam
-// - Have a link at the main page to an example: `/useful/email?email=is@this.valid`
-// - Create a `validateEmail` method in the `UtilityService`
-//     - check if the string contains a `@` and a `.`
-// - Display the following to the user
-//     - `is@this.valid is a valid email address` in green
-//     - `not_valid_email.com is not a valid email address` in red
+  public HashMap<String, String> validateEmail(String email) {
+    HashMap<String, String> result = new HashMap<>();
+    boolean isValid = email.contains("@") && email.contains(".");
 
-// ## Caesar encoder/decoder
+    String msg = (isValid) ? email + " is a valid email address" :
+        email + " is not a valid email address";
+
+    result.put("msg", msg);
+    result.put("color", (isValid) ? "green" : "red");
+
+    return result;
+  }
+
+  // ## Caesar encoder/decoder
 // _Caesar coding is just shifting every character in the text with a specific number of amount in the alphabet, coded `example` with `1` is `fybnqmf`._
 // - Endpoints for encoding and decoding with a `text` and `number` query param
 // - Link at the main page for both
