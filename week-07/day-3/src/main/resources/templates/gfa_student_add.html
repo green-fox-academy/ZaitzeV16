@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Green Fox Academy</title>
+</head>
+<body>
+
+  <form th:action="@{/gfa/save}" method="post">
+    <label for="student_name">Add a name for the student</label>
+    <input type="text" id="student_name" name="name">
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
