@@ -48,10 +48,10 @@ public class UtilityService {
   }
 
   // ## Caesar encoder/decoder
-// _Caesar coding is just shifting every character in the text with a specific number of amount in the alphabet, coded `example` with `1` is `fybnqmf`._
-// - Endpoints for encoding and decoding with a `text` and `number` query param
-// - Link at the main page for both
-// - Service method:
+  // _Caesar coding is just shifting every character in the text with a specific number of amount in the alphabet, coded `example` with `1` is `fybnqmf`._
+  // - Endpoints for encoding and decoding with a `text` and `number` query param
+  // - Link at the main page for both
+  // - Service method:
 
   public String caesar(String text, int number) {
     if (number < 0) {
@@ -66,5 +66,3 @@ public class UtilityService {
     return result;
   }
 }
-
-// - For encoding use the `number` value, for decoding use the `-number` value
