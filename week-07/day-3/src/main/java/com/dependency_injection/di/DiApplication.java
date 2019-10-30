@@ -17,8 +17,8 @@ public class DiApplication implements CommandLineRunner {
 
   @Autowired
   public DiApplication(PrinterService printerService,
-      @Qualifier("redColor") ColorService redColorService,
-      @Qualifier("greenColor") ColorService greenColorService) {
+      @Qualifier("redColorImp") ColorService redColorService,
+      @Qualifier("greenColorImp") ColorService greenColorService) {
     this.printerService = printerService;
     this.redColorService = redColorService;
     this.greenColorService = greenColorService;

@@ -5,18 +5,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier(value = "redColor")
-public class RedColor implements ColorService {
+@Qualifier(value = "greenColor")
+public class GreenColorImp implements ColorService {
 
   private PrinterService printerService;
 
   @Autowired
-  public RedColor(PrinterService printerService) {
+  public GreenColorImp(PrinterService printerService) {
     this.printerService = printerService;
   }
 
   @Override
   public void printColor() {
-    printerService.log("It is red in color...");
+    printerService.log("It is green in color...");
   }
 }
