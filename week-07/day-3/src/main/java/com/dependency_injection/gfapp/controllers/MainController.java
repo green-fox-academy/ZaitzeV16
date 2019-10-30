@@ -2,6 +2,7 @@ package com.dependency_injection.gfapp.controllers;
 
 import com.dependency_injection.gfapp.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,8 @@ public class MainController {
   private StudentService studentService;
 
   @Autowired
-  public MainController(StudentService studentService) {
+  //public MainController(@Qualifier("studServList") StudentService studentService) {
+  public MainController(@Qualifier("studServTxt") StudentService studentService) {
     this.studentService = studentService;
   }
 
