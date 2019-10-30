@@ -24,9 +24,9 @@ public class DiApplication implements CommandLineRunner {
     this.greenColorService = greenColorService;
   }
 
-  public static void main(String[] args) {
-    SpringApplication.run(DiApplication.class, args);
-  }
+//  public static void main(String[] args) {
+//    SpringApplication.run(DiApplication.class, args);
+//  }
 
   @Override
   public void run(String... args) throws Exception {
