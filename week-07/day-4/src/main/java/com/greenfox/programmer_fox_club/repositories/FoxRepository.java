@@ -10,31 +10,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class FoxRepository {
 
+  // region Fields
   private List<Fox> foxes = new ArrayList<>();
+  // endregion Fields
 
+
+  // region Constructors
   public FoxRepository() {
-    // TODO: 2019. 11. 04. only for test purposes
-    this.foxes.add(new Fox("Karak"));
-    this.foxes.add(new Fox("Kajak"));
-    this.foxes.add(new Fox("szemelygepjarmu"));
-    this.foxes.add(new Fox("Bela"));
   }
+  // endregion Constructors
 
+
+  // region Getters
   public List<Fox> getFoxes() {
-    return foxes;
+    return this.foxes;
   }
 
-  public void addFox(String petName) {
-    this.foxes.add(new Fox(petName));
-  }
-
-  public boolean existsFox(String petName) {
-    return this.getFoxes()
-        .stream()
-        .anyMatch(f -> petName.toLowerCase().equals(f.getName().toLowerCase()));
-  }
-
-  public Fox getFox(String petName) {
+  public Fox getFoxByName(String petName) {
     if (this.existsFox(petName)) {
       return this.getFoxes()
           .stream()
@@ -44,4 +36,26 @@ public class FoxRepository {
     }
     return null;
   }
+  // endregion Getters
+
+
+  // region Setters
+  // endregion Setters
+
+
+  // region Methods
+  //   region Public
+  public Fox addFox(String petName) {
+    Fox newFox = new Fox(petName);
+    this.foxes.add(newFox);
+    return newFox;
+  }
+
+  public boolean existsFox(String petName) {
+    return this.getFoxes()
+        .stream()
+        .anyMatch(f -> petName.toLowerCase().equals(f.getName().toLowerCase()));
+  }
+  //   endregion Public
+  // endregion Methods
 }

@@ -8,8 +8,21 @@
 
   <span>Info page aye!</span>
   <br>
-  <span>Ya' pet's name</span>
-  <span th:text="${fox}"></span>
+  <img src="img/fox_default.jpg" alt="Not shovin' ya' img..." th:height="350">
+
+  <div th:object="${fox}">
+    <span th:field="*{name}"/>
+    <span th:text="|
+    Ya' pet's name is *{name} . Currently living on *{food} and *{drink}.
+    (S)He knows *{trickList.size()} tricks.
+    |"></span>
+    <br>
+    <span>Such a pretty doggo! :)</span>
+    <br>
+    <ul th:each="trick : *{trickList}">
+      <li th:text="${trick.getName()}"></li>
+    </ul>
+  </div>
 
 
 </body>
