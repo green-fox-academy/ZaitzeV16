@@ -2,16 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>Login</title>
+  <title>Register</title>
 </head>
 <body>
 
   <div th:insert="fragments/frg_header :: header"></div>
   <span>Give me your pet's name!</span>
   <br>
-  <div th:insert="fragments/frg_login :: login_form"></div>
-  <div>
-    <a th:href="@{/register}">Or register...</a>
-  </div>
+  <div th:insert="fragments/frg_register :: register_form"></div>
+
 </body>
 </html>

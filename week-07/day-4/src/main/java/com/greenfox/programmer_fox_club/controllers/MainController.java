@@ -2,6 +2,7 @@ package com.greenfox.programmer_fox_club.controllers;
 
 import com.greenfox.programmer_fox_club.models.Fox;
 import com.greenfox.programmer_fox_club.services.FoxService;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,22 +28,62 @@ public class MainController {
   }
 
   @PostMapping(value = "/login")
-  public String doLogin(@RequestParam(name = "pet_name") String petName, RedirectAttributes rA) {
-
+  public String doLogin(
+      @RequestParam(name = "pet_name") String petName,
+      RedirectAttributes rA) {
+    if (!this.foxService.existsFox(petName)) {
+      return "redirect:/login";
+    }
     rA.addFlashAttribute("petName", petName);
     return "redirect:/information";
   }
 
+  @GetMapping(value = "/register")
+  public String register() {
+    return "register";
+  }
+
+  @PostMapping(value = "/register")
+  public String register(
+      @RequestParam(name = "pet_name") String petName,
+      RedirectAttributes rA) {
+    rA.addFlashAttribute("newFox", this.foxService.addAndGetFox(petName));
+    return "redirect:/information";
+  }
+
   @GetMapping(value = "/information")
-  public String showInformation(@ModelAttribute(name = "petName") String petName, Model model) {
-    Fox fox = this.foxService.getFox(petName);
-    if (fox == null) {
+  @ModelAttribute
+  public String showInformation(Model model) {
+    Fox fox = (model.containsAttribute("newFox")) ?
+        (Fox) (model.getAttribute("newFox")) : null;
+    String petName = (String) model.getAttribute("petName");
+
+    Fox newFox = (fox == null) ? (
+        (!petName.trim().isEmpty()) ? this.foxService.addAndGetFox(petName) : null
+    ) : fox;
+    if (newFox == null) {
       return "redirect:/login";
     }
-
-    model.addAttribute("fox", fox);
+    model.addAttribute("fox", newFox);
     return "information";
   }
+
+//  @GetMapping(value = "/information")
+//  @ModelAttribute(name = "fox")
+//  public String showInformation(
+//      Model model,
+//      @ModelAttribute(name = "petName") String petName) {
+////    Fox fox = (optionalFox.length == 1) ? optionalFox[0] : null;
+//    Fox fox = (model.getAttribute("fox").length == 1) ? optionalFox[0] : null;
+//    Fox newFox = (fox == null) ? (
+//        (!petName.trim().isEmpty()) ? this.foxService.addAndGetFox(petName) : null
+//        ) : fox;
+//    if (newFox == null) {
+//      return "redirect:/login";
+//    }
+//    model.addAttribute("fox", newFox);
+//    return "information";
+//  }
 
 
 }

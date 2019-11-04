@@ -24,14 +24,14 @@ public class FoxRepository {
     return foxes;
   }
 
-  public void addFox(Fox fox) {
-    this.foxes.add(fox);
+  public void addFox(String petName) {
+    this.foxes.add(new Fox(petName));
   }
 
   public boolean existsFox(String petName) {
     return this.getFoxes()
         .stream()
-        .anyMatch(f -> petName.equals(f.getName()));
+        .anyMatch(f -> petName.toLowerCase().equals(f.getName().toLowerCase()));
   }
 
   public Fox getFox(String petName) {
@@ -44,6 +44,4 @@ public class FoxRepository {
     }
     return null;
   }
-
-
 }

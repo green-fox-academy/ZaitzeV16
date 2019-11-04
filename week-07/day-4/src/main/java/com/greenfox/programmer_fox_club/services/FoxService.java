@@ -22,4 +22,17 @@ public class FoxService {
   public Fox getFox(String petName) {
     return this.repository.getFox(petName);
   }
+
+  public void addFox(String petName) {
+    this.repository.addFox(petName);
+  }
+
+  public Fox addAndGetFox(String petName) {
+    this.repository.addFox(petName);
+    return this.repository.getFox(petName);
+  }
+
+  public boolean existsFox(String petName) {
+    return this.repository.existsFox(petName);
+  }
 }
