@@ -7,10 +7,12 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Todo {
 
@@ -31,11 +33,4 @@ public class Todo {
     this.title = title;
   }
   // endregion Constructors
-
-
-  // region Setters
-  public void setTitle(String title) {
-    this.title = title;
-  }
-  // endregion Setters
 }

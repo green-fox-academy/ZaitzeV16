@@ -4,9 +4,20 @@
   <body>
 
     <div th:fragment="todos_list">
-      <ul th:each="todo: ${todos}">
-        <li th:text="${todo.getTitle()}"></li>
-      </ul>
+      <table th:each="todo: ${todos}">
+        <tr>
+          <th>ID</th>
+          <th>ACTION</th>
+          <th>DONE</th>
+          <th>URGENT</th>
+        </tr>
+        <tr>
+          <td th:text="${todo.getId()}"></td>
+          <td th:text="${todo.getTitle()}"></td>
+          <td th:text="${todo.isDone()}"></td>
+          <td th:text="${todo.isUrgent()}"></td>
+        </tr>
+      </table>
     </div>
 
   </body>

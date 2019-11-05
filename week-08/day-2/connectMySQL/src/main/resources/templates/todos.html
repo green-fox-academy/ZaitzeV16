@@ -3,11 +3,20 @@
 <head>
   <title>Todos</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
 <body>
 
   <h1>Todos for today</h1>
+
+  <form
+      th:action="@{/todo/list}"
+      th:method="post">
+    <button type="submit" name="undone" th:value="true">Done</button>
+    <button type="submit" name="undone" th:value="false">Undone</button>
+  </form>
+
   <div th:insert="fragments/frg_todos_list :: todos_list"></div>
 
 </body>
