@@ -43,6 +43,10 @@ public class TodoService {
     this.todoRepository.save(t);
   }
 
+  public void save(String title) {
+    this.todoRepository.save(new Todo(title));
+  }
+
   public Todo findById(long id) {
     return this.todoRepository.findById(id).orElse(null);
   }

@@ -17,6 +17,8 @@
     <button type="submit" name="undone" th:value="false">Undone</button>
   </form>
 
+  <a th:href="@{/todo/add}">Add new Todo</a>
+
   <div th:insert="fragments/frg_todos_list :: todos_list"></div>
 
 </body>

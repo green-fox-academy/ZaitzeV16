@@ -29,22 +29,33 @@ public class TodoController implements CommandLineRunner {
 
 
   // region GetMappings
-  @GetMapping(value = {"/", "/list"})
+  @GetMapping(value = {"", "/", "/list"})
   public String list(Model model) {
     model.addAttribute("todos", todoService.findAll());
     return "todos";
+  }
+
+  @GetMapping(value = "/add")
+  public String addTodo() {
+    return "add";
   }
   // endregion GetMappings
 
 
   // region PostMappings
-  @PostMapping(value = {"/", "/list"})
+  @PostMapping(value = {"", "/", "/list"})
   public String filterUndoneList(
       Model model,
       @RequestParam(name = "undone") boolean isUndone
   ) {
     model.addAttribute("todos", todoService.findAllByIsDone(isUndone));
     return "todos";
+  }
+
+  @PostMapping(value = "/add")
+  public String addTodo(@RequestParam(name = "title") String todoTitle) {
+    this.todoService.save(todoTitle);
+    return "redirect:/todo/list";
   }
   // endregion PostMappings
 
