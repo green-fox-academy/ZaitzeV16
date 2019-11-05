@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <body>
+
+    <div th:fragment="todos_list">
+      <ul th:each="todo: ${todos}">
+        <li th:text="${todo.getTitle()}"></li>
+      </ul>
+    </div>
+
+  </body>
+</html>
