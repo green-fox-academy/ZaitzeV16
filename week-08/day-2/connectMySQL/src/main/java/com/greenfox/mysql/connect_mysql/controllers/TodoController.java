@@ -1,9 +1,7 @@
 package com.greenfox.mysql.connect_mysql.controllers;
 
-import com.greenfox.mysql.connect_mysql.models.Todo;
 import com.greenfox.mysql.connect_mysql.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/todo")
-public class TodoController implements CommandLineRunner {
+public class TodoController {
 
   // region Fields
   private TodoService todoService;
@@ -46,6 +44,14 @@ public class TodoController implements CommandLineRunner {
     this.todoService.deleteById(id);
     return "redirect:/todo/list";
   }
+
+  @GetMapping(value = "/{id}/edit")
+  public String showEditTodo(
+      Model model,
+      @PathVariable long id) {
+    model.addAttribute("todo", this.todoService.findById(id));
+    return "edit";
+  }
   // endregion GetMappings
 
 
@@ -64,34 +70,15 @@ public class TodoController implements CommandLineRunner {
     this.todoService.save(todoTitle);
     return "redirect:/todo/list";
   }
-  // endregion PostMappings
 
-
-  // region Methods
-  //   region Overrides
-  @Override
-  public void run(String... args) throws Exception {
-//    this.todoService.save(new Todo("think of new tasks"));
-//    this.todoService.save(new Todo("do something else"));
-//    this.todoService.save(new Todo("watch Star Trek"));
-//    this.todoService.save(new Todo("especially Discovery"));
-//    this.todoService.save(new Todo("and more"));
-//    this.todoService.save(new Todo("stand in the corner"));
-//    this.todoService.save(new Todo("sajhlésadg"));
-//    this.todoService.save(new Todo("could you read this"));
-//    this.todoService.save(new Todo("asdasd"));
-//    this.todoService.save(new Todo("ehh"));
-//    this.todoService.save(new Todo("lie on the floor"));
-//    this.todoService.save(new Todo("die on the loor"));
-
-//    for (int i = 0; i < this.todoService.findAll().size(); i+=5) {
-//      Todo currentTodo = this.todoService.findById(i);
-//      if (currentTodo != null) {
-//        currentTodo.setDone(true);
-//        this.todoService.save(currentTodo);
-//      }
-//    }
+  @PostMapping(value = "/{id}/edit")
+  public String editTodo(
+      @PathVariable long id,
+      @RequestParam(name = "title") String title,
+      @RequestParam(name = "isUrgent") boolean urgent,
+      @RequestParam(name = "isDone") boolean done) {
+    this.todoService.update(id, title, urgent, done);
+    return "redirect:/todo/list";
   }
-  //   endregion Overrides
-  // endregion Methods
+  // endregion PostMappings
 }

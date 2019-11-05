@@ -39,6 +39,10 @@ public class TodoService {
         .collect(Collectors.toList());
   }
 
+  public Todo findById(long id) {
+    return this.todoRepository.findById(id).orElse(null);
+  }
+
   public void save(Todo t) {
     this.todoRepository.save(t);
   }
@@ -47,12 +51,16 @@ public class TodoService {
     this.todoRepository.save(new Todo(title));
   }
 
-  public void deleteById(long id) {
-    this.todoRepository.deleteById(id);
+  public void update(long id, String title, boolean urgent, boolean done) {
+    Todo todo = this.findById(id);
+    todo.setTitle(title);
+    todo.setUrgent(urgent);
+    todo.setDone(done);
+    this.todoRepository.save(todo);
   }
 
-  public Todo findById(long id) {
-    return this.todoRepository.findById(id).orElse(null);
+  public void deleteById(long id) {
+    this.todoRepository.deleteById(id);
   }
   //   endregion Public
   // endregion Methods
