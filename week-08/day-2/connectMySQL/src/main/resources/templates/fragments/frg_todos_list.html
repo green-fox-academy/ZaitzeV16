@@ -4,18 +4,22 @@
   <body>
 
     <div th:fragment="todos_list">
-      <table th:each="todo: ${todos}">
+      <table>
         <tr>
           <th>ID</th>
           <th>ACTION</th>
           <th>DONE</th>
           <th>URGENT</th>
         </tr>
-        <tr>
+        <tr th:each="todo: ${todos}">
           <td th:text="${todo.getId()}"></td>
           <td th:text="${todo.getTitle()}"></td>
           <td th:text="${todo.isDone()}"></td>
           <td th:text="${todo.isUrgent()}"></td>
+          <td>
+<!--            <button th:action="@{'/todo/' + ${todo.getId()} +'/delete'}">Ide üssé' paraszt</button>-->
+            <a th:href="@{'/todo/' + ${todo.getId()} +'/delete'}">Ide üssé' paraszt</a>
+          </td>
         </tr>
       </table>
     </div>

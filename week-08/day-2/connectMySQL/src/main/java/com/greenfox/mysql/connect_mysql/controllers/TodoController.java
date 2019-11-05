@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +39,12 @@ public class TodoController implements CommandLineRunner {
   @GetMapping(value = "/add")
   public String addTodo() {
     return "add";
+  }
+
+  @GetMapping(value = "/{id}/delete")
+  public String deleteTodo(@PathVariable long id) {
+    this.todoService.deleteById(id);
+    return "redirect:/todo/list";
   }
   // endregion GetMappings
 

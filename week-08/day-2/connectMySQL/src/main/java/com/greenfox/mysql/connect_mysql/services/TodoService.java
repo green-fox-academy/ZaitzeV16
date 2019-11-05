@@ -47,6 +47,10 @@ public class TodoService {
     this.todoRepository.save(new Todo(title));
   }
 
+  public void deleteById(long id) {
+    this.todoRepository.deleteById(id);
+  }
+
   public Todo findById(long id) {
     return this.todoRepository.findById(id).orElse(null);
   }
