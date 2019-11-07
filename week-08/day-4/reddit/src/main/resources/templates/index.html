@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Reddit</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+
+  <a th:href="@{/submit}">Submit New post</a>
+  <br>
+  <a th:href="@{/login}">...or login...</a>
+  <br>
+  <a th:href="@{/register}">...or maybe register?</a>
+
+  <br><br>
+  <h1>Trending posts</h1>
+
+  <div th:insert="fragments/frg_post_table :: post_table"></div>
+
+  <br>
+  <br>
+  <a th:href="@{'/' + ${page_number}}">Next page</a>
+
+</body>
+</html>

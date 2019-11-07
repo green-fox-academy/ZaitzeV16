@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+  <body>
+
+    <div th:fragment="post_table">
+      <table>
+        <tr th:each="post: ${posts}">
+          <td th:text="${post.getVotes()}"></td>
+          <td>
+            <a th:href="@{'/upvote/' + ${post.getId()}}">+</a>
+          </td>
+          <td>
+            <a th:href="@{'/downvote/' + ${post.getId()}}">-</a>
+          </td>
+          <td>
+          <a th:text="${post.getTitle()}" th:href="@{${post.getUrl()}}"></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </body>
+</html>
