@@ -6,6 +6,8 @@ import com.greenfox.reddit.repositories.PostRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -50,6 +52,21 @@ public class PostServiceImpl implements PostService {
   @Override
   public List<Post> findAllByOrderByVotesDesc() {
     return this.repository.findAllByOrderByVotesDesc();
+  }
+
+  @Override
+  public Page<Post> findAll(Pageable pageable) {
+    return this.repository.findAll(pageable);
+  }
+
+  @Override
+  public List<Post> findByOrderByVotesDesc(Pageable pageable) {
+    return this.repository.findByOrderByVotesDesc(pageable);
+  }
+
+  @Override
+  public long count() {
+    return this.repository.count();
   }
   //   endregion Read
 

@@ -13,6 +13,10 @@
   <a th:href="@{/login}">...or login...</a>
   <br>
   <a th:href="@{/register}">...or maybe register?</a>
+  <br>
+  <div th:if="${principal} != null">
+    <a th:href="@{/logout}">DO NOT LOGOUT?!</a>
+  </div>
 
   <br><br>
   <h1>Trending posts</h1>

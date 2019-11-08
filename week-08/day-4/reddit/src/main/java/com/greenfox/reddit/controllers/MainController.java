@@ -34,15 +34,17 @@ public class MainController {
   //   region GetMappings
   @GetMapping(value = "/")
   public String index(Model model) {
-    model.addAttribute("page_number", 0);
-    model.addAttribute("posts", this.postController.findAllByOrderByVotesDesc());
+    int pageNumber = 0;
+    model.addAttribute("page_number", pageNumber);
+    model.addAttribute("posts", this.postController.findByOrderByVotesDesc(pageNumber));
     return "index";
   }
 
   @GetMapping(value = "/{page_number}")
-  public String index(Model model, @PathVariable(name = "page_number") long pageNumber) {
+  public String index(Model model, @PathVariable(name = "page_number") int pageNumber) {
+    pageNumber = (pageNumber == 0) ? 1 : pageNumber;
     model.addAttribute("page_number", pageNumber + 1);
-    model.addAttribute("posts", this.postController.findAllByOrderByVotesDesc());
+    model.addAttribute("posts", this.postController.findByOrderByVotesDesc(pageNumber));
     return "index";
   }
 
@@ -50,7 +52,7 @@ public class MainController {
   public String downVote(Model model, @PathVariable(name = "id") long id) {
     this.postController.downVote(id);
     model.addAttribute("posts", this.postController.findAllByOrderByVotesDesc());
-    return "index";
+    return "redirect:/";
   }
 
   @GetMapping(value = {"/upvote/{id}", "/upvote/{id}/"})
