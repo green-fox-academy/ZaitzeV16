@@ -4,6 +4,7 @@ import java.util.HashMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,6 +48,19 @@ public class MainController {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
     } else {
       result.put("welcome_message", "Oh, hi there " + name + ", my dear "+ title + "!");
+      return ResponseEntity.status(HttpStatus.OK).body(result);
+    }
+  }
+
+  @GetMapping(value = "/appenda/{appendable}")
+  public ResponseEntity appendA(
+      @PathVariable(name = "appendable", required = false) String appendable) {
+    HashMap<String, Object> result = new HashMap<>();
+
+    if (appendable == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+    } else {
+      result.put("appended", appendable + "a");
       return ResponseEntity.status(HttpStatus.OK).body(result);
     }
   }
