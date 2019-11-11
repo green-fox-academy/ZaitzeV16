@@ -2,7 +2,6 @@ package com.greenfox.backend_api.controllers;
 
 import com.greenfox.backend_api.models.ArrayHandlerDTO;
 import com.greenfox.backend_api.models.ArrayResultDTO;
-import com.greenfox.backend_api.models.ArrayResultIntDTO;
 import com.greenfox.backend_api.services.ApiServiceImpl;
 import java.util.HashMap;
 import java.util.Map;
