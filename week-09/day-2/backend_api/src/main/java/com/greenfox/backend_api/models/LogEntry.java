@@ -1,4 +1,4 @@
-package com.greenfox.log.models;
+package com.greenfox.backend_api.models;
 
 import java.util.Date;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class LogEntry {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   @CreatedDate
-  private Date createdAt;
+  private Date createdAt = new Date();
   private String endpoint;
   private String data;
   // endregion Fields

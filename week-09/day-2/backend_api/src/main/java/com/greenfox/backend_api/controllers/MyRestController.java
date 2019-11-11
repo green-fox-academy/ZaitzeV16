@@ -3,6 +3,7 @@ package com.greenfox.backend_api.controllers;
 import com.greenfox.backend_api.models.ArrayHandlerDTO;
 import com.greenfox.backend_api.models.ArrayResultDTO;
 import com.greenfox.backend_api.services.ApiServiceImpl;
+import com.greenfox.backend_api.services.LogEntryServiceImpl;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,15 @@ public class MyRestController {
 
   // region Fields
   private ApiServiceImpl apiService;
+  private LogEntryServiceImpl logEntryService;
   // endregion Fields
 
 
   // region Constructors
   @Autowired
-  public MyRestController(ApiServiceImpl apiService) {
+  public MyRestController(ApiServiceImpl apiService, LogEntryServiceImpl logEntryService) {
     this.apiService = apiService;
+    this.logEntryService = logEntryService;
   }
   // endregion Constructors
 
@@ -36,6 +39,9 @@ public class MyRestController {
   @GetMapping(value = "/doubling")
   public HashMap<String, Object> doubling(
       @RequestParam(name = "input", required = false) Integer input) {
+    // save log
+    this.logEntryService.save("/doubling", "input=" + input);
+
     HashMap<String, Object> result = new HashMap<>();
     if (input == null) {
       result.put("error", "Please provide an input!");
@@ -50,6 +56,9 @@ public class MyRestController {
   public ResponseEntity greeter(
       @RequestParam(name = "name", required = false) String name,
       @RequestParam(name = "title", required = false) String title) {
+    // save log
+    this.logEntryService.save("/greeter", "name=" + name + " title=" + title);
+
     HashMap<String, Object> result = new HashMap<>();
     if (name == null && title == null) {
       result.put("error", "Please provide a name and a title!");
@@ -69,6 +78,8 @@ public class MyRestController {
   @GetMapping(value = "/appenda/{appendable}")
   public ResponseEntity appendA(
       @PathVariable(name = "appendable", required = false) String appendable) {
+    this.logEntryService.save("/appenda", "appendable=" + appendable);
+
     HashMap<String, Object> result = new HashMap<>();
 
     if (appendable == null) {
@@ -86,6 +97,8 @@ public class MyRestController {
   public ResponseEntity doUntil(
       @PathVariable(name = "action", required = false) String action,
       @RequestBody(required = false) Map<String, ?> input) {
+    this.logEntryService.save("/dountil",
+        "action=" + action + " " + input.toString());
 
     HashMap<String, Object> result = new HashMap<>();
 
@@ -113,7 +126,9 @@ public class MyRestController {
   @PostMapping(value = "/arrays")
   public ResponseEntity<ArrayResultDTO> arrays(
       @RequestBody(required = false) ArrayHandlerDTO input) {
-      return this.apiService.arrays(input);
+    this.logEntryService.save("/arrays", input.toString());
+
+    return this.apiService.arrays(input);
   }
   // endregion PostMappings
 
