@@ -12,4 +12,5 @@ public interface LogEntryRepository extends CrudRepository<LogEntry, Long> {
 
   public LogEntry findById(long id);
 
+  public long countAllBy();
 }
