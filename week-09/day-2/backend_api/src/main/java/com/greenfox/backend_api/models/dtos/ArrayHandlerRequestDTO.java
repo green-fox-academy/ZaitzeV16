@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArrayHandlerDTO implements RequestDTO {
+public class ArrayHandlerRequestDTO implements RequestDTO {
 
   // region Fields
   private String what;
@@ -18,8 +18,10 @@ public class ArrayHandlerDTO implements RequestDTO {
   // endregion Fields
 
 
+  // region Overrides
   @Override
   public String toString() {
     return "what=" + this.what + ", numbers=" + Arrays.toString(numbers);
   }
+  // endregion Overrides
 }

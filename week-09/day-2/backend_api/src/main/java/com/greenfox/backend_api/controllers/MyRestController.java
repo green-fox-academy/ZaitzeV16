@@ -1,6 +1,6 @@
 package com.greenfox.backend_api.controllers;
 
-import com.greenfox.backend_api.models.dtos.ArrayHandlerDTO;
+import com.greenfox.backend_api.models.dtos.ArrayHandlerRequestDTO;
 import com.greenfox.backend_api.models.dtos.ResultDTO;
 import com.greenfox.backend_api.models.dtos.LogEntryResultDTO;
 import com.greenfox.backend_api.services.ApiServiceImpl;
@@ -137,7 +137,7 @@ public class MyRestController {
 
   @PostMapping(value = "/arrays")
   public ResponseEntity<ResultDTO> arrays(
-      @RequestBody(required = false) ArrayHandlerDTO input) {
+      @RequestBody(required = false) ArrayHandlerRequestDTO input) {
     this.logEntryService.save("/arrays", input.toString());
 
     return this.apiService.arrays(input);

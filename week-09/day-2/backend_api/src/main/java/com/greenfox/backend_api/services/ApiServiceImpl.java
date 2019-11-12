@@ -1,6 +1,6 @@
 package com.greenfox.backend_api.services;
 
-import com.greenfox.backend_api.models.dtos.ArrayHandlerDTO;
+import com.greenfox.backend_api.models.dtos.ArrayHandlerRequestDTO;
 import com.greenfox.backend_api.models.dtos.ResultDTO;
 import com.greenfox.backend_api.models.dtos.ArrayResultIntArrayDTO;
 import com.greenfox.backend_api.models.dtos.ArrayResultIntDTO;
@@ -28,7 +28,7 @@ public class ApiServiceImpl implements ApiService {
     }
   }
 
-  public ResponseEntity<ResultDTO> arrays(ArrayHandlerDTO input) {
+  public ResponseEntity<ResultDTO> arrays(ArrayHandlerRequestDTO input) {
     if (input.getWhat() != null && input.getNumbers() != null) {
 
       if ("sum".equals(input.getWhat())) {
