@@ -4,9 +4,11 @@ import com.greenfox.backend_api.models.dtos.ArrayHandlerRequestDTO;
 import com.greenfox.backend_api.models.dtos.ResultDTO;
 import com.greenfox.backend_api.models.dtos.LogEntryResultDTO;
 import com.greenfox.backend_api.models.dtos.ReverserOfTheSithRequestDTO;
+import com.greenfox.backend_api.models.dtos.TranslateRequestDTO;
 import com.greenfox.backend_api.services.ApiServiceImpl;
 import com.greenfox.backend_api.services.LogEntryServiceImpl;
 import com.greenfox.backend_api.services.ReverserOfTheSithServiceImpl;
+import com.greenfox.backend_api.services.TranslateServiceImpl;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +30,7 @@ public class MyRestController {
   private ApiServiceImpl apiService;
   private LogEntryServiceImpl logEntryService;
   private ReverserOfTheSithServiceImpl sithService;
+  private TranslateServiceImpl translateService;
   // endregion Fields
 
 
@@ -36,11 +39,13 @@ public class MyRestController {
   public MyRestController(
       ApiServiceImpl apiService,
       LogEntryServiceImpl logEntryService,
-      ReverserOfTheSithServiceImpl sithService
+      ReverserOfTheSithServiceImpl sithService,
+      TranslateServiceImpl translateService
   ) {
     this.apiService = apiService;
     this.logEntryService = logEntryService;
     this.sithService = sithService;
+    this.translateService = translateService;
   }
   // endregion Constructors
 
@@ -154,6 +159,15 @@ public class MyRestController {
     this.logEntryService.save(request.getRequestURI(), requestDTO.toString());
 
     return this.sithService.getSithMsg(requestDTO);
+  }
+
+  @PostMapping(value = "/translate")
+  public ResponseEntity<ResultDTO> translate(
+      @RequestBody(required = false) TranslateRequestDTO requestDTO,
+      HttpServletRequest request
+  ) {
+    this.logEntryService.save(request.getRequestURI(), requestDTO.toString());
+    return this.translateService.translate(requestDTO);
   }
   // endregion PostMappings
 
