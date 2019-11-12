@@ -3,10 +3,13 @@ package com.greenfox.backend_api.controllers;
 import com.greenfox.backend_api.models.dtos.ArrayHandlerRequestDTO;
 import com.greenfox.backend_api.models.dtos.ResultDTO;
 import com.greenfox.backend_api.models.dtos.LogEntryResultDTO;
+import com.greenfox.backend_api.models.dtos.ReverserOfTheSithRequestDTO;
 import com.greenfox.backend_api.services.ApiServiceImpl;
 import com.greenfox.backend_api.services.LogEntryServiceImpl;
+import com.greenfox.backend_api.services.ReverserOfTheSithServiceImpl;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +27,7 @@ public class MyRestController {
   // region Fields
   private ApiServiceImpl apiService;
   private LogEntryServiceImpl logEntryService;
-//  private ReverserOfTheSithServiceImpl sithService;
+  private ReverserOfTheSithServiceImpl sithService;
   // endregion Fields
 
 
@@ -32,12 +35,12 @@ public class MyRestController {
   @Autowired
   public MyRestController(
       ApiServiceImpl apiService,
-      LogEntryServiceImpl logEntryService
-//      ReverserOfTheSithServiceImpl sithService
+      LogEntryServiceImpl logEntryService,
+      ReverserOfTheSithServiceImpl sithService
   ) {
     this.apiService = apiService;
     this.logEntryService = logEntryService;
-//    this.sithService = sithService;
+    this.sithService = sithService;
   }
   // endregion Constructors
 
@@ -137,19 +140,21 @@ public class MyRestController {
 
   @PostMapping(value = "/arrays")
   public ResponseEntity<ResultDTO> arrays(
-      @RequestBody(required = false) ArrayHandlerRequestDTO input) {
-    this.logEntryService.save("/arrays", input.toString());
+      @RequestBody(required = false) ArrayHandlerRequestDTO input,
+      HttpServletRequest request) {
+    this.logEntryService.save(request.getRequestURI(), input.toString());
 
     return this.apiService.arrays(input);
   }
 
-//  @PostMapping(value = "/sith")
-//  public ResponseEntity<ReverserOfTheSithResultDTO> sith(
-//      @RequestBody(required = false) ReverserOfTheSithDTO input) {
-//    this.logEntryService.save("/arrays", input.toString());
-//
-//    return this.sithService.getYodaMsg(input);
-//  }
+  @PostMapping(value = "/sith")
+  public ResponseEntity<ResultDTO> sith(
+      @RequestBody(required = false) ReverserOfTheSithRequestDTO requestDTO,
+      HttpServletRequest request) {
+    this.logEntryService.save(request.getRequestURI(), requestDTO.toString());
+
+    return this.sithService.getSithMsg(requestDTO);
+  }
   // endregion PostMappings
 
 }
