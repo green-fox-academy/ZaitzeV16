@@ -1,13 +1,11 @@
 package com.greenfox.backend_api.controllers;
 
-import com.greenfox.backend_api.models.ArrayHandlerDTO;
-import com.greenfox.backend_api.models.ArrayResultDTO;
-import com.greenfox.backend_api.models.LogEntry;
-import com.greenfox.backend_api.models.LogEntryDTO;
+import com.greenfox.backend_api.models.dtos.ArrayHandlerDTO;
+import com.greenfox.backend_api.models.dtos.ResultDTO;
+import com.greenfox.backend_api.models.dtos.LogEntryResultDTO;
 import com.greenfox.backend_api.services.ApiServiceImpl;
 import com.greenfox.backend_api.services.LogEntryServiceImpl;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,14 +24,20 @@ public class MyRestController {
   // region Fields
   private ApiServiceImpl apiService;
   private LogEntryServiceImpl logEntryService;
+//  private ReverserOfTheSithServiceImpl sithService;
   // endregion Fields
 
 
   // region Constructors
   @Autowired
-  public MyRestController(ApiServiceImpl apiService, LogEntryServiceImpl logEntryService) {
+  public MyRestController(
+      ApiServiceImpl apiService,
+      LogEntryServiceImpl logEntryService
+//      ReverserOfTheSithServiceImpl sithService
+  ) {
     this.apiService = apiService;
     this.logEntryService = logEntryService;
+//    this.sithService = sithService;
   }
   // endregion Constructors
 
@@ -94,7 +98,7 @@ public class MyRestController {
   }
 
   @GetMapping(value = "/log")
-  public ResponseEntity<LogEntryDTO> log() {
+  public ResponseEntity<LogEntryResultDTO> log() {
     return this.logEntryService.getLogEntriesWithCount();
   }
   // endregion GetMappings
@@ -132,12 +136,20 @@ public class MyRestController {
   }
 
   @PostMapping(value = "/arrays")
-  public ResponseEntity<ArrayResultDTO> arrays(
+  public ResponseEntity<ResultDTO> arrays(
       @RequestBody(required = false) ArrayHandlerDTO input) {
     this.logEntryService.save("/arrays", input.toString());
 
     return this.apiService.arrays(input);
   }
+
+//  @PostMapping(value = "/sith")
+//  public ResponseEntity<ReverserOfTheSithResultDTO> sith(
+//      @RequestBody(required = false) ReverserOfTheSithDTO input) {
+//    this.logEntryService.save("/arrays", input.toString());
+//
+//    return this.sithService.getYodaMsg(input);
+//  }
   // endregion PostMappings
 
 }

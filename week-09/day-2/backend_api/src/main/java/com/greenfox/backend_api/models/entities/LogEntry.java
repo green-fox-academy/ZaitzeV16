@@ -1,4 +1,4 @@
-package com.greenfox.backend_api.models;
+package com.greenfox.backend_api.models.entities;
 
 import java.util.Date;
 import javax.persistence.Entity;

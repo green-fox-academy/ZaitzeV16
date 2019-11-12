@@ -1,6 +1,6 @@
 package com.greenfox.backend_api.services;
 
-import com.greenfox.backend_api.models.ArrayHandlerDTO;
+import com.greenfox.backend_api.models.dtos.ArrayHandlerDTO;
 import org.springframework.http.ResponseEntity;
 
 public interface ApiService {

@@ -1,4 +1,4 @@
-package com.greenfox.backend_api.models;
+package com.greenfox.backend_api.models.dtos;
 
 import java.util.Arrays;
 import lombok.AllArgsConstructor;
@@ -6,11 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
-public class ArrayHandlerDTO {
+public class ArrayHandlerDTO implements RequestDTO {
 
   // region Fields
   private String what;

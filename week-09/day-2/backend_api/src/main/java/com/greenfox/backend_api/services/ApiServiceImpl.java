@@ -1,10 +1,10 @@
 package com.greenfox.backend_api.services;
 
-import com.greenfox.backend_api.models.ArrayHandlerDTO;
-import com.greenfox.backend_api.models.ArrayResultDTO;
-import com.greenfox.backend_api.models.ArrayResultIntArrayDTO;
-import com.greenfox.backend_api.models.ArrayResultIntDTO;
-import com.greenfox.backend_api.models.ErrorDTO;
+import com.greenfox.backend_api.models.dtos.ArrayHandlerDTO;
+import com.greenfox.backend_api.models.dtos.ResultDTO;
+import com.greenfox.backend_api.models.dtos.ArrayResultIntArrayDTO;
+import com.greenfox.backend_api.models.dtos.ArrayResultIntDTO;
+import com.greenfox.backend_api.models.dtos.ErrorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class ApiServiceImpl implements ApiService {
     }
   }
 
-  public ResponseEntity<ArrayResultDTO> arrays(ArrayHandlerDTO input) {
+  public ResponseEntity<ResultDTO> arrays(ArrayHandlerDTO input) {
     if (input.getWhat() != null && input.getNumbers() != null) {
 
       if ("sum".equals(input.getWhat())) {

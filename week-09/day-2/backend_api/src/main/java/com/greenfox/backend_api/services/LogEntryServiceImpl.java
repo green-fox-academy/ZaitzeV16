@@ -1,9 +1,9 @@
 package com.greenfox.backend_api.services;
 
 
-import com.greenfox.backend_api.models.LogEntryDTO;
+import com.greenfox.backend_api.models.dtos.LogEntryResultDTO;
 import com.greenfox.backend_api.repositories.LogEntryRepository;
-import com.greenfox.backend_api.models.LogEntry;
+import com.greenfox.backend_api.models.entities.LogEntry;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +49,9 @@ public class LogEntryServiceImpl implements LogEntryService {
   }
 
   @Override
-  public ResponseEntity<LogEntryDTO> getLogEntriesWithCount() {
+  public ResponseEntity<LogEntryResultDTO> getLogEntriesWithCount() {
     return ResponseEntity.status(HttpStatus.OK)
-        .body(new LogEntryDTO(
+        .body(new LogEntryResultDTO(
             this.findAll(),
             this.countAllBy()));
   }

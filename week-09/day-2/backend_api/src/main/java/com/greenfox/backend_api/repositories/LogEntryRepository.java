@@ -1,6 +1,6 @@
 package com.greenfox.backend_api.repositories;
 
-import com.greenfox.backend_api.models.LogEntry;
+import com.greenfox.backend_api.models.entities.LogEntry;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
