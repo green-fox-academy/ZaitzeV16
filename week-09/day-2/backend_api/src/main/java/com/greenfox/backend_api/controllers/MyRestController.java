@@ -2,7 +2,6 @@ package com.greenfox.backend_api.controllers;
 
 import com.greenfox.backend_api.models.dtos.ArrayHandlerRequestDTO;
 import com.greenfox.backend_api.models.dtos.ResultDTO;
-import com.greenfox.backend_api.models.dtos.LogEntryResultDTO;
 import com.greenfox.backend_api.models.dtos.ReverserOfTheSithRequestDTO;
 import com.greenfox.backend_api.models.dtos.TranslateRequestDTO;
 import com.greenfox.backend_api.services.ApiServiceImpl;
@@ -106,8 +105,12 @@ public class MyRestController {
   }
 
   @GetMapping(value = "/log")
-  public ResponseEntity<LogEntryResultDTO> log() {
-    return this.logEntryService.getLogEntriesWithCount();
+  public ResponseEntity<ResultDTO> log(
+      @RequestParam(name = "count", required = false) Integer count,
+      @RequestParam(name = "page", required = false) Integer page,
+      @RequestParam(name = "q", required = false) String q
+  ) {
+    return this.logEntryService.getLogEntriesWithCount(count, page, q);
   }
   // endregion GetMappings
 

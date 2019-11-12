@@ -15,8 +15,8 @@ public class ReverserOfTheSithRequestDTO implements RequestDTO {
   private String text;
   // endregion Fields
 
-  // region Overrides
 
+  // region Overrides
   @Override
   public String toString() {
     return this.text;

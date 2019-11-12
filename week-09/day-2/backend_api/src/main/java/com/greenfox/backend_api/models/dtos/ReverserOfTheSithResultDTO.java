@@ -15,7 +15,6 @@ public class ReverserOfTheSithResultDTO implements ResultDTO {
 
 
   // region Constructors
-
   public ReverserOfTheSithResultDTO(String sithText) {
     this.sithText = this.sithReverser(sithText);
   }

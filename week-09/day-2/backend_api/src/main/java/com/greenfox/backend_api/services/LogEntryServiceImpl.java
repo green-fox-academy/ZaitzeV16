@@ -2,9 +2,9 @@ package com.greenfox.backend_api.services;
 
 
 import com.greenfox.backend_api.models.dtos.LogEntryResultDTO;
+import com.greenfox.backend_api.models.dtos.ResultDTO;
 import com.greenfox.backend_api.repositories.LogEntryRepository;
 import com.greenfox.backend_api.models.entities.LogEntry;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,31 +28,26 @@ public class LogEntryServiceImpl implements LogEntryService {
   // endregion Constructors
 
 
-  @Override
-  public List<LogEntry> findAll() {
-    return new ArrayList<>(this.logEntryRepository.findAll());
-  }
-
-  @Override
-  public LogEntry findById(long id) {
-    return this.logEntryRepository.findById(id);
-  }
-
+  // region Overrides
   @Override
   public void save(String endpoint, String data) {
     this.logEntryRepository.save(new LogEntry(endpoint, data));
   }
 
   @Override
-  public long countAllBy() {
-    return this.logEntryRepository.countAllBy();
-  }
+  public ResponseEntity<ResultDTO> getLogEntriesWithCount(
+      Integer count, Integer page, String q) {
 
-  @Override
-  public ResponseEntity<LogEntryResultDTO> getLogEntriesWithCount() {
+    int limit = (count != null) ? count : Integer.MAX_VALUE;
+    Integer offset = (page != null) ? (page - 1) * limit : 0;
+    String pattern = (q != null) ? "%" + q + "%" : "%";
+
+    List<LogEntry> entries = this
+        .logEntryRepository
+        .findAllOrderByCreatedAtDescLimitOffsetPattern(limit, offset, pattern);
+
     return ResponseEntity.status(HttpStatus.OK)
-        .body(new LogEntryResultDTO(
-            this.findAll(),
-            this.countAllBy()));
+        .body(new LogEntryResultDTO(entries, entries.size()));
   }
+  // endregion Overrides
 }
