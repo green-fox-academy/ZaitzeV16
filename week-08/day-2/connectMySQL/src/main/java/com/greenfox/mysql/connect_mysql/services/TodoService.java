@@ -1,5 +1,6 @@
 package com.greenfox.mysql.connect_mysql.services;
 
+import com.greenfox.mysql.connect_mysql.models.Assignee;
 import com.greenfox.mysql.connect_mysql.models.Todo;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface TodoService {
 
   public void save(Todo t);
 
-  public void update(long id, String title, boolean urgent, boolean done);
+  public void update(long id, String title, boolean isUrgent, boolean isDone, Assignee assignee);
 
   public void deleteById(long id);
 }

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,9 +18,11 @@ public class Todo {
   private long id;
   private String title;
   @Column(name = "is_urgent")
-  private boolean isUrgent = false;
+  private boolean isUrgent;
   @Column(name = "is_done")
-  private boolean isDone = false;
+  private boolean isDone;
+  @ManyToOne
+  private Assignee assignee;
   // endregion Fields
 
 
@@ -27,14 +30,17 @@ public class Todo {
   public Todo() {
   }
 
-  public Todo(String title) {
-    this.title = title;
-  }
-
   public Todo(String title, boolean isUrgent, boolean isDone) {
     this.title = title;
     this.isUrgent = isUrgent;
     this.isDone = isDone;
+  }
+
+  public Todo(String title, boolean isUrgent, boolean isDone, Assignee assignee) {
+    this.title = title;
+    this.isUrgent = isUrgent;
+    this.isDone = isDone;
+    this.assignee = assignee;
   }
 // endregion Constructors
 
@@ -55,7 +61,11 @@ public class Todo {
   public boolean getIsDone() {
     return isDone;
   }
-  // endregion Getters
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+// endregion Getters
 
 
   // region Setters
@@ -74,5 +84,9 @@ public class Todo {
   public void setIsDone(boolean done) {
     this.isDone = done;
   }
-  // endregion Setters
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
+  }
+// endregion Setters
 }

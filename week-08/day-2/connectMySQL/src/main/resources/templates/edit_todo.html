@@ -12,7 +12,7 @@
 
   <form th:action="@{'/todo/' + ${todo.getId()} +'/edit'}" th:method="post" th:object="${todo}">
     <label for="todo_title">Todo Description</label>
-    <input type="text" id="todo_title" th:field="*{title}">
+    <input type="text" id="todo_title" th:field="*{title}" required>
 
     <br>
 
@@ -23,6 +23,10 @@
 
     <label for="todo_done">Done</label>
     <input type="checkbox" id="todo_done" th:field="*{isDone}">
+
+    <br>
+
+    <div th:insert="fragments/frg_selections :: assignees_selection"></div>
 
     <br>
 

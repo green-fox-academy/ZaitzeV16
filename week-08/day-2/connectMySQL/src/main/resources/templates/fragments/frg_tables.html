@@ -7,15 +7,20 @@
       <table>
         <tr>
           <th>ID</th>
-          <th>ACTION</th>
+          <th>TITLE</th>
           <th>DONE</th>
           <th>URGENT</th>
+          <th>ASSIGNEE</th>
         </tr>
         <tr th:each="todo: ${todos}">
           <td th:text="${todo.getId()}"></td>
           <td th:text="${todo.getTitle()}"></td>
           <td th:text="${todo.getIsDone()}"></td>
           <td th:text="${todo.getIsUrgent()}"></td>
+          <td th:object="${todo.getAssignee()}">
+            <a th:href="@{'/todo/assignees/' + *{id} + '/todos'}"
+               th:text="*{name}"></a>
+          </td>
           <td>
             <a th:href="@{'/todo/' + ${todo.getId()} +'/delete'}">Ide üssé' paraszt</a>
           </td>
@@ -32,21 +37,22 @@
           <th>ID</th>
           <th>NAME</th>
           <th>EMAIL</th>
+          <th>TODOS</th>
         </tr>
         <tr th:each="assignee: ${assignees}">
           <td th:text="${assignee.getId()}"></td>
-          <td th:text="${assignee.getName()}"></td>
+          <td>
+            <a th:href="@{'/todo/assignees/' + ${assignee.getId()} + '/todos'}"
+               th:text="${assignee.getName()}"></a>
+          </td>
           <td th:text="${assignee.getEmail()}"></td>
           <td>
-            <a th:href="@{'/todo/' + ${assignee.getId()} +'/delete'}">Ide üssé' paraszt</a>
+            <a th:href="@{'/todo/assignees/' + ${assignee.getId()} +'/delete'}">Ide üssé' paraszt</a>
           </td>
           <td>
-            <a th:href="@{'/todo/' + ${assignee.getId()} +'/edit'}">Modolkodójjá</a>
+            <a th:href="@{'/todo/assignees/' + ${assignee.getId()} +'/edit'}">Modolkodójjá</a>
           </td>
         </tr>
-<!--        <tr>-->
-<!--          <form action=""></form>-->
-<!--        </tr>-->
       </table>
     </div>
 

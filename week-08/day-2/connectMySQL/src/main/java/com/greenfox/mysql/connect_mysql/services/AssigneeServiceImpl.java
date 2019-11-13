@@ -1,6 +1,7 @@
 package com.greenfox.mysql.connect_mysql.services;
 
 import com.greenfox.mysql.connect_mysql.models.Assignee;
+import com.greenfox.mysql.connect_mysql.models.Todo;
 import com.greenfox.mysql.connect_mysql.repositories.AssigneeRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,13 @@ public class AssigneeServiceImpl implements AssigneeService {
 
   @Override
   public void save(Assignee assignee) {
+    this.assigneeRepository.save(assignee);
+  }
+
+  @Override
+  public void save(Assignee assignee, Todo todo) {
+    List<Todo> todos = assignee.getTodos();
+    todos.add(todo);
     this.assigneeRepository.save(assignee);
   }
 

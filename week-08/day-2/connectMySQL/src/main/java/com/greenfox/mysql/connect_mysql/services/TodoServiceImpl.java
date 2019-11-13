@@ -1,5 +1,6 @@
 package com.greenfox.mysql.connect_mysql.services;
 
+import com.greenfox.mysql.connect_mysql.models.Assignee;
 import com.greenfox.mysql.connect_mysql.models.Todo;
 import com.greenfox.mysql.connect_mysql.repositories.TodoRepository;
 import java.util.ArrayList;
@@ -53,11 +54,12 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public void update(long id, String title, boolean isUrgent, boolean isDone) {
+  public void update(long id, String title, boolean isUrgent, boolean isDone, Assignee assignee) {
     Todo todo = this.findById(id);
     todo.setTitle(title);
     todo.setIsUrgent(isUrgent);
     todo.setIsDone(isDone);
+    todo.setAssignee(assignee);
     this.todoRepository.save(todo);
   }
 

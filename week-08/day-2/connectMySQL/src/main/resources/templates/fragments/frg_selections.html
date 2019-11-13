@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <body>
+
+    <div th:fragment="assignees_selection">
+      <label for="assignees">Assignee</label>
+      <select name="assignee" id="assignees" th:field="*{assignee}" required>
+        <option th:each="assignee : ${assignees}"
+                th:text="${assignee.getName()}"
+                th:value="${assignee.getId()}"
+        ></option>
+      </select>
+    </div>
+
+  </body>
+</html>
