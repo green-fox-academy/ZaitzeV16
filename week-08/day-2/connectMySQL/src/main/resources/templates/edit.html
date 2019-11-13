@@ -10,19 +10,19 @@
 
   <h1>Edit Todo</h1>
 
-  <form th:action="@{'/todo/' + ${todo.getId()} +'/edit'}" th:method="post">
+  <form th:action="@{'/todo/' + ${todo.getId()} +'/edit'}" th:method="post" th:object="${todo}">
     <label for="todo_title">Todo Description</label>
-    <input type="text" id="todo_title" name="title" th:value="${todo.getTitle()}">
+    <input type="text" id="todo_title" th:field="*{title}">
 
     <br>
 
     <label for="todo_urgent">Urgent</label>
-    <input type="radio" id="todo_urgent" name="isUrgent" th:checked="${todo.isUrgent()}">
+    <input type="checkbox" id="todo_urgent" th:field="*{isUrgent}">
 
     <br>
 
     <label for="todo_done">Done</label>
-    <input type="radio" id="todo_done" name="isDone" th:checked="${todo.isDone()}">
+    <input type="checkbox" id="todo_done" th:field="*{isDone}">
 
     <br>
 

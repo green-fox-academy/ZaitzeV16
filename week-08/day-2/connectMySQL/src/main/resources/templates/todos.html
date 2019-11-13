@@ -13,8 +13,8 @@
   <form
       th:action="@{/todo/list}"
       th:method="post">
-    <button type="submit" name="undone" th:value="true">Done</button>
-    <button type="submit" name="undone" th:value="false">Undone</button>
+    <button type="submit" name="is_done" th:value="true">Done</button>
+    <button type="submit" name="is_done" th:value="false">Undone</button>
   </form>
 
   <a th:href="@{/todo/add}">Add new Todo</a>
