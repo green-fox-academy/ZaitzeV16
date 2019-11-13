@@ -9,6 +9,8 @@ public interface TodoService {
 
   public List<Todo> findAllByDone(boolean isDone);
 
+  public List<Todo> findAllByTitle(String title);
+
   public Todo findById(long id);
 
   public void save(Todo t);

@@ -12,4 +12,6 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
   @Query(value = "SELECT * FROM todo WHERE is_done = :done", nativeQuery = true)
   public List<Todo> findAllByDone(boolean done);
 
+  @Query(value = "SELECT * FROM todo WHERE LOWER(title) LIKE LOWER(:title)", nativeQuery = true)
+  public List<Todo> findAllByTitle(String title);
 }

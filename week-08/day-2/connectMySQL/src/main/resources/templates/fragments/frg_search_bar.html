@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <body>
+
+  <div th:fragment="done_filter">
+    <form th:action="@{/todo/list}" th:method="post">
+      <button type="submit" name="is_done" th:value="true">Done</button>
+      <button type="submit" name="is_done" th:value="false">Undone</button>
+    </form>
+  </div>
+
+  <div th:fragment="search_bar">
+    <form th:action="@{/todo/list}" th:method="post">
+      <button type="submit">RESET</button>
+      <br>
+      <input type="search" placeholder="...title" name="title">
+      <button type="submit">GO</button>
+    </form>
+  </div>
+
+  </body>
+</html>

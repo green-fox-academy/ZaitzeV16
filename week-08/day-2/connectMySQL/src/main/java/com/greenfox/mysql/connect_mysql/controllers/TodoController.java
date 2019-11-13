@@ -57,11 +57,16 @@ public class TodoController {
 
   // region PostMappings
   @PostMapping(value = {"", "/", "/list"})
-  public String filterListByIsDone(
+  public String filterListBy(
       Model model,
-      @RequestParam(name = "is_done") boolean isDone
+      @RequestParam(name = "is_done", required = false) boolean isDone,
+      @RequestParam(name = "title", required = false) String title
   ) {
-    model.addAttribute("todos", todoService.findAllByDone(isDone));
+    if (title != null) {
+      model.addAttribute("todos", todoService.findAllByTitle(title));
+    } else {
+      model.addAttribute("todos", todoService.findAllByDone(isDone));
+    }
     return "todos";
   }
 
