@@ -3,18 +3,18 @@
 
   <body>
 
-    <div th:fragment="todos_list">
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>TITLE</th>
-          <th>DONE</th>
-          <th>URGENT</th>
-          <th>DEADLINE</th>
-          <th>ASSIGNEE</th>
+    <div th:fragment="todos_list" class="table-responsive">
+      <table class="table table-dark table-striped">
+        <tr class="thead-dark">
+          <th scope="col"><strong>#</strong></th>
+          <th scope="col">TITLE</th>
+          <th scope="col">DONE</th>
+          <th scope="col">URGENT</th>
+          <th scope="col">DEADLINE</th>
+          <th scope="col">ASSIGNEE</th>
         </tr>
         <tr th:each="todo: ${todos}">
-          <td th:text="${todo.getId()}"></td>
+          <th scope="row" th:text="${todo.getId()}"></th>
           <td th:text="${todo.getTitle()}"></td>
           <td th:text="${todo.getIsDone()}"></td>
           <td th:text="${todo.getIsUrgent()}"></td>

@@ -3,21 +3,54 @@
 <head>
   <title>Todos</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
 <body>
+  <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
 
-  <h1>Todos for today</h1>
-  <a th:href="@{/todo/assignees/list}">Assignees</a>
-  <br>
-  <br>
-  <br>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" th:href="@{/todo/list}"><h1>Todos for today</h1></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div th:insert="/fragments/frg_search_bar :: done_filter"></div>
-  <div th:insert="/fragments/frg_search_bar :: search_bar"></div>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto overflow-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/todo/assignees/list}"><strong>Assignees</strong></a>
+        </li>
+        <li class="nav-item col-">
+          <a class="nav-link active" th:href="@{/todo/add}">Add new Todo</a>
+        </li>
+      </ul>
+    </div>
 
-  <a th:href="@{/todo/add}">Add new Todo</a>
+
+    <div class="navbar-collapse collapse w-100 order-4 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <div th:insert="/fragments/frg_search_bar :: done_filter"></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <div th:insert="/fragments/frg_search_bar :: search_bar"></div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!--  <br><br><br><br>-->
+
+  <div class="containter">
+  </div>
 
   <div th:insert="fragments/frg_tables :: todos_list"></div>
 

@@ -5,19 +5,29 @@
 
   <div th:fragment="done_filter">
     <form th:action="@{/todo/list}" th:method="post">
-      <button type="submit" name="is_done" th:value="true">Done</button>
-      <button type="submit" name="is_done" th:value="false">Undone</button>
+      <button type="submit"
+              name="is_done"
+              class="btn btn-outline-success my-2 my-sm-0"
+              th:value="true">Done</button>
+      <button type="submit"
+              name="is_done"
+              class="btn btn-outline-success my-2 my-sm-0"
+              th:value="false">Undone</button>
     </form>
   </div>
 
-  <div th:fragment="search_bar">
-    <form th:action="@{/todo/list}" th:method="post">
-      <button type="submit">RESET</button>
-      <br>
-      <input type="search" placeholder="...title" name="title">
-      <button type="submit">GO</button>
+  <div th:fragment="search_bar" >
+    <form class="form-inline mt-2 mt-md-0" th:action="@{/todo/list}" th:method="post">
+      <button class="btn btn-outline-success my-2 my-sm-0"
+              type="submit">RESET</button>
+      <input class="form-control mr-sm-2"
+             type="search"
+             placeholder="Title or name"
+             aria-label="Search"
+             name="title">
+      <button class="btn btn-outline-success my-2 my-sm-0"
+              type="submit">GO</button>
     </form>
   </div>
-
   </body>
 </html>
