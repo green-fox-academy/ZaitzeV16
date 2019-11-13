@@ -10,6 +10,7 @@
           <th>TITLE</th>
           <th>DONE</th>
           <th>URGENT</th>
+          <th>DEADLINE</th>
           <th>ASSIGNEE</th>
         </tr>
         <tr th:each="todo: ${todos}">
@@ -17,6 +18,7 @@
           <td th:text="${todo.getTitle()}"></td>
           <td th:text="${todo.getIsDone()}"></td>
           <td th:text="${todo.getIsUrgent()}"></td>
+          <td th:text="${todo.getDueDate()}"></td>
           <td th:object="${todo.getAssignee()}">
             <a th:href="@{'/todo/assignees/' + *{id} + '/todos'}"
                th:text="*{name}"></a>

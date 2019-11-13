@@ -33,7 +33,7 @@ public class AssigneeServiceImpl implements AssigneeService {
 
   @Override
   public List<Assignee> findAllByName(String name) {
-    return this.assigneeRepository.filterByName(name);
+    return this.assigneeRepository.filterAllByName(name);
   }
 
   @Override

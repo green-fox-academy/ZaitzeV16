@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface AssigneeRepository extends CrudRepository<Assignee, Long> {
 
   @Query(value = "SELECT * FROM assignees WHERE LOWER(name) LIKE LOWER(:name)", nativeQuery = true)
-  public List<Assignee> filterByName(String name);
+  public List<Assignee> filterAllByName(String name);
 
 }

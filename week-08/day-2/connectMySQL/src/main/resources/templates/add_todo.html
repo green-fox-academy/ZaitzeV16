@@ -20,6 +20,9 @@
     <label for="is_done">Done?</label>
     <input type="checkbox" id="is_done" th:field="*{isDone}">
     <br>
+    <label for="due_date">Due Date</label>
+    <input type="date" id="due_date" th:field="*{dueDate}">
+    <br>
     <div th:insert="fragments/frg_selections :: assignees_selection"></div>
     <button type="submit">Submit</button>
   </form>

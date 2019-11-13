@@ -110,7 +110,7 @@ public class MainController {
       @RequestParam(name = "title", required = false) String title
   ) {
     if (title != null) {
-      model.addAttribute("todos", todoService.filterByTitle(title));
+      model.addAttribute("todos", this.todoService.findAllByTitleOrAssigneeName(title));
     } else {
       model.addAttribute("todos", todoService.findAllByDone(isDone));
     }
@@ -119,12 +119,16 @@ public class MainController {
 
   @PostMapping(value = "/add")
   public String addTodo(@ModelAttribute(name = "todo") Todo todo) {
+    System.out.println(todo.getDueDate());
+    System.out.println(todo.getDueDate().getClass());
     this.assigneeService.save(
         this.assigneeService.findById(todo.getAssignee().getId()),
         new Todo(
             todo.getTitle(),
             todo.getIsUrgent(),
-            todo.getIsDone()));
+            todo.getIsDone(),
+            todo.getDueDate())
+    );
     return "redirect:/todo/list";
   }
 
@@ -137,8 +141,8 @@ public class MainController {
         todo.getTitle(),
         todo.getIsUrgent(),
         todo.getIsDone(),
-        todo.getAssignee()
-    );
+        todo.getDueDate(),
+        todo.getAssignee());
     return "redirect:/todo/list";
   }
   //   endregion todo related

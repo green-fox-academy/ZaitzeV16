@@ -40,7 +40,7 @@ public class Assignee {
     this.name = name;
     this.email = email;
   }
-// endregion Constructors
+  // endregion Constructors
 
 
   // region Getters
@@ -59,7 +59,7 @@ public class Assignee {
   public List<Todo> getTodos() {
     return todos;
   }
-// endregion Getters
+  // endregion Getters
 
 
   // region Setters

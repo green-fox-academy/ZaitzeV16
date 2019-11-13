@@ -26,6 +26,11 @@
 
     <br>
 
+    <label for="due_date">Due Date</label>
+    <input type="date" id="due_date" th:field="*{dueDate}">
+
+    <br>
+
     <div th:insert="fragments/frg_selections :: assignees_selection"></div>
 
     <br>

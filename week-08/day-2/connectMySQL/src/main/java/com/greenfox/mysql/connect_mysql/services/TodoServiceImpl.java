@@ -4,6 +4,7 @@ import com.greenfox.mysql.connect_mysql.models.Assignee;
 import com.greenfox.mysql.connect_mysql.models.Todo;
 import com.greenfox.mysql.connect_mysql.repositories.TodoRepository;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,13 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public List<Todo> filterByTitle(String title){
+  public List<Todo> filterByTitle(String title) {
     return this.todoRepository.filterByTitle("%" + title + "%");
+  }
+
+  @Override
+  public List<Todo> findAllByTitleOrAssigneeName(String name) {
+    return this.todoRepository.findAllByTitleOrAssigneeName("%" + name + "%");
   }
 
   @Override
@@ -54,11 +60,13 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public void update(long id, String title, boolean isUrgent, boolean isDone, Assignee assignee) {
+  public void update(long id, String title, boolean isUrgent, boolean isDone, Date dueDate,
+      Assignee assignee) {
     Todo todo = this.findById(id);
     todo.setTitle(title);
     todo.setIsUrgent(isUrgent);
     todo.setIsDone(isDone);
+    todo.setDueDate(dueDate);
     todo.setAssignee(assignee);
     this.todoRepository.save(todo);
   }

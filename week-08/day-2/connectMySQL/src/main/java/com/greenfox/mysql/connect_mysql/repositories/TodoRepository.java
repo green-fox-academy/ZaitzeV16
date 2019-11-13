@@ -15,4 +15,11 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
   @Query(value = "SELECT * FROM todos WHERE LOWER(title) LIKE LOWER(:title)", nativeQuery = true)
   public List<Todo> filterByTitle(String title);
 
+  @Query(value = "SELECT t.* FROM todos AS t "
+      + "LEFT JOIN assignees AS a "
+      + "ON t.assignee_id = a.id "
+      + "WHERE LOWER(t.title) LIKE LOWER(:name) OR "
+      + "LOWER(a.name) LIKE LOWER(:name)", nativeQuery = true)
+  public List<Todo> findAllByTitleOrAssigneeName(String name);
+
 }
