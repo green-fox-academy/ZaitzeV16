@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Todos</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+
+  <h1>Assignees</h1>
+  <a th:href="@{/todo/list}">Todos</a>
+  <br><br><br>
+
+  <a th:href="@{/todo/assignees/add}">Add new Assignee</a>
+  <br><br>
+
+  <div th:insert="fragments/frg_assignees_list :: assignees_list"></div>
+
+</body>
+</html>

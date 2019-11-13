@@ -9,6 +9,10 @@
 <body>
 
   <h1>Todos for today</h1>
+  <a th:href="@{/todo/assignees/list}">Assignees</a>
+  <br>
+  <br>
+  <br>
 
   <div th:insert="/fragments/frg_search_bar :: done_filter"></div>
   <div th:insert="/fragments/frg_search_bar :: search_bar"></div>

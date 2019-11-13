@@ -9,7 +9,7 @@ public interface TodoService {
 
   public List<Todo> findAllByDone(boolean isDone);
 
-  public List<Todo> findAllByTitle(String title);
+  public List<Todo> filterByTitle(String title);
 
   public Todo findById(long id);
 

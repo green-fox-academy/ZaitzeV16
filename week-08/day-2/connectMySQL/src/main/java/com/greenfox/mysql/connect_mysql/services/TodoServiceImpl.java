@@ -38,8 +38,8 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public List<Todo> findAllByTitle(String title){
-    return this.todoRepository.findAllByTitle("%" + title + "%");
+  public List<Todo> filterByTitle(String title){
+    return this.todoRepository.filterByTitle("%" + title + "%");
   }
 
   @Override

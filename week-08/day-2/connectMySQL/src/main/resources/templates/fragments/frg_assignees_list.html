@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <body>
+
+    <div th:fragment="assignees_list">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>EMAIL</th>
+        </tr>
+        <tr th:each="assignee: ${assignees}">
+          <td th:text="${assignee.getId()}"></td>
+          <td th:text="${assignee.getName()}"></td>
+          <td th:text="${assignee.getEmail()}"></td>
+          <td>
+            <a th:href="@{'/todo/assignees/' + ${assignee.getId()} +'/delete'}">Ide üssé' paraszt</a>
+          </td>
+          <td>
+            <a th:href="@{'/todo/assignees/' + ${assignee.getId()} +'/edit'}">Modolkodójjá</a>
+          </td>
+        </tr>
+<!--        <tr>-->
+<!--          <form action=""></form>-->
+<!--        </tr>-->
+      </table>
+    </div>
+
+  </body>
+</html>

@@ -23,7 +23,8 @@ public class TodoController {
 
   // region Constructors
   @Autowired
-  public TodoController(TodoServiceImpl todoService) {
+  public TodoController(
+      TodoServiceImpl todoService) {
     this.todoService = todoService;
   }
   // endregion Constructors
@@ -31,14 +32,14 @@ public class TodoController {
 
   // region GetMappings
   @GetMapping(value = {"", "/", "/list"})
-  public String list(Model model) {
+  public String todoList(Model model) {
     model.addAttribute("todos", todoService.findAll());
     return "todos";
   }
 
   @GetMapping(value = "/add")
   public String addTodo() {
-    return "add";
+    return "add_todo";
   }
 
   @GetMapping(value = "/{id}/delete")
@@ -50,7 +51,7 @@ public class TodoController {
   @GetMapping(value = "/{id}/edit")
   public String showEditTodo(Model model, @PathVariable long id) {
     model.addAttribute("todo", this.todoService.findById(id));
-    return "edit";
+    return "edit_todo";
   }
   // endregion GetMappings
 
@@ -63,7 +64,7 @@ public class TodoController {
       @RequestParam(name = "title", required = false) String title
   ) {
     if (title != null) {
-      model.addAttribute("todos", todoService.findAllByTitle(title));
+      model.addAttribute("todos", todoService.filterByTitle(title));
     } else {
       model.addAttribute("todos", todoService.findAllByDone(isDone));
     }

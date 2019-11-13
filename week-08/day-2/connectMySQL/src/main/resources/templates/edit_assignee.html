@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Edit Todo</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+
+  <h1>Edit Assignee</h1>
+
+  <form th:action="@{'/todo/assignees/' + ${assignee.getId()} +'/edit'}"
+        th:method="post"
+        th:object="${assignee}">
+    <label for="assignee_name">Assignee name</label>
+    <input type="text" id="assignee_name" th:field="*{name}">
+
+    <br>
+
+    <label for="assignee_email">Email</label>
+    <input type="text" id="assignee_email" th:field="*{email}">
+
+    <br>
+
+    <button type="submit">Submit</button>
+
+    <!-- Onclick for button redirect to href -->
+    <button type="button"
+            th:onclick="|window.location.href='@{/todo/assignees/list}'|">Cancel</button>
+  </form>
+
+</body>
+</html>
