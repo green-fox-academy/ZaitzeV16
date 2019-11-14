@@ -1,16 +1,45 @@
 package com.greenfox.programmer_fox_club.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "foxes")
 public class Fox {
 
   // region Fields
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+
   private String name;
-  private List<Trick> trickList;
+
+  @ManyToMany(fetch = FetchType.EAGER,
+      cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+  @JoinTable
+      (
+      name = "foxes_tricks",
+      joinColumns = @JoinColumn(name = "fox_id"),
+      inverseJoinColumns = @JoinColumn(name = "trick_id"))
+  private Set<Trick> tricks = new HashSet<>();
+
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private Food food;
+
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private Drink drink;
-  // endregion
+  // endregion Fields
 
 
   // region Constructors
@@ -19,18 +48,21 @@ public class Fox {
 
   public Fox(String name) {
     this.name = name;
-    this.trickList = new ArrayList<>();
   }
-  // endregion
+  // endregion Constructors
 
 
   // region Getters
-  public String getName() {
-    return name;
+  public long getId() {
+    return id;
   }
 
-  public List<Trick> getTrickList() {
-    return trickList;
+  public String getName() {
+    return this.name;
+  }
+
+  public Set<Trick> getTricks() {
+    return tricks;
   }
 
   public Food getFood() {
@@ -38,9 +70,9 @@ public class Fox {
   }
 
   public Drink getDrink() {
-    return drink;
+    return this.drink;
   }
-  // endregion
+  // endregion Getters
 
 
   // region Setters
@@ -48,8 +80,8 @@ public class Fox {
     this.name = name;
   }
 
-  public void setTrickList(List<Trick> trickList) {
-    this.trickList = trickList;
+  public void setTricks(Set<Trick> tricks) {
+    this.tricks = tricks;
   }
 
   public void setFood(Food food) {
@@ -59,14 +91,13 @@ public class Fox {
   public void setDrink(Drink drink) {
     this.drink = drink;
   }
-  // endregion
-
+  // endregion Setters
 
   // region Methods
   //   region Public
-  public void learnTrick(Trick trick) {
-    this.trickList.add(trick);
-  }
+//  public void learnTrick(Trick trick) {
+//    this.trickList.add(trick);
+//  }
   //   endregion Public
 
 

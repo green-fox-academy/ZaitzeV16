@@ -1,13 +1,32 @@
 package com.greenfox.programmer_fox_club.models;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
 public class Food {
 
   // region Fields
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
   private String name;
+  @OneToMany
+  @Transient
+  private List<Fox> foxes = new ArrayList<>();
   // endregion Fields
 
 
   // region Constructors
+  public Food() {
+  }
+
   public Food(String name) {
     this.name = name;
   }
@@ -15,10 +34,29 @@ public class Food {
 
 
   // region Getters
+  public long getId() {
+    return id;
+  }
+
   public String getName() {
     return name;
   }
-  // endregion Getters
+
+  public List<Fox> getFoxes() {
+    return foxes;
+  }
+// endregion Getters
+
+
+  // region Setters
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setFoxes(List<Fox> foxes) {
+    this.foxes = foxes;
+  }
+// endregion Setters
 
 
   // region Methods

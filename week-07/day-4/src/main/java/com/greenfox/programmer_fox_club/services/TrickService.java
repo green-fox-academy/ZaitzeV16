@@ -1,27 +1,24 @@
 package com.greenfox.programmer_fox_club.services;
 
-import com.greenfox.programmer_fox_club.models.Fox;
 import com.greenfox.programmer_fox_club.models.Trick;
 import java.util.List;
 
-public interface FoxService {
+public interface TrickService {
 
   // region FindBy
-  public Fox findById(long id);
+  public Trick findById(long id);
 
-  public Fox findByName(String name);
+  public Trick findByName(String name);
   // endregion FindBy
 
 
   // region FindAllBy
-  public List<Fox> findAllBy();
+  public List<Trick> findAllBy();
   // endregion FindAllBy
 
 
   // region SaveUpdate
-  public void save(Fox fox);
-
-  public void learnTrick(Fox fox, Trick trick);
+  public void save(Trick trick);
   // endregion SaveUpdate
 
 }
