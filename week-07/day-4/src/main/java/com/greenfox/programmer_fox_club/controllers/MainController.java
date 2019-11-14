@@ -28,7 +28,8 @@ public class MainController {
   @ModelAttribute
   public ModelAndView showInformation(ModelAndView modelAndView) {
     modelAndView.setViewName("information");
-
+    modelAndView.addObject("fox", this.foxServiceImpl.findById(1));
+    modelAndView.addObject("tricks", this.foxServiceImpl.findById(1).getTricks());
     return modelAndView;
   }
 

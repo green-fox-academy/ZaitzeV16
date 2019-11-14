@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <body>
+
+    <div th:fragment="trick_selection">
+      <label for="tricks">Tricks</label>
+      <select name="tricks"
+              id="tricks"
+              th:field="*{tricks}"
+              th:default="*{trick}"
+              required>
+        <option th:each="tricks : ${tricks}"
+                th:text="${tricks.getName()}"
+                th:value="${tricks.getId()}"
+        ></option>
+      </select>
+    </div>
+
+<!--    <div th:fragment="food_selection">-->
+<!--      <label for="food">Food</label>-->
+<!--      <select name="tricks" id="tricks" th:field="*{tricks}" required>-->
+<!--        <option th:each="tricks : ${tricks}"-->
+<!--                th:text="${tricks.getName()}"-->
+<!--                th:value="${tricks.getId()}"-->
+<!--        ></option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+<!--    <div th:fragment="trick_selection">-->
+<!--      <label for="tricks">Tricks</label>-->
+<!--      <select name="tricks" id="tricks" th:field="*{tricks}" required>-->
+<!--        <option th:each="tricks : ${tricks}"-->
+<!--                th:text="${tricks.getName()}"-->
+<!--                th:value="${tricks.getId()}"-->
+<!--        ></option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+  </body>
+</html>

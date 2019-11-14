@@ -27,12 +27,16 @@ public class Fox {
 
   @ManyToMany(fetch = FetchType.EAGER,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-  @JoinTable
-      (
-      name = "foxes_tricks",
-      joinColumns = @JoinColumn(name = "fox_id"),
-      inverseJoinColumns = @JoinColumn(name = "trick_id"))
+  @JoinTable(name = "foxes_tricks",
+      joinColumns = @JoinColumn(
+          name = "fox_id", referencedColumnName = "id"),
+      inverseJoinColumns = @JoinColumn(
+          name = "trick_id", referencedColumnName = "id"))
   private Set<Trick> tricks = new HashSet<>();
+
+  @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+  @JoinColumn(name = "trick_id")
+  private Trick trick;
 
   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private Food food;
@@ -72,6 +76,10 @@ public class Fox {
   public Drink getDrink() {
     return this.drink;
   }
+
+  public Trick getTrick() {
+    return trick;
+  }
   // endregion Getters
 
 
@@ -91,13 +99,17 @@ public class Fox {
   public void setDrink(Drink drink) {
     this.drink = drink;
   }
+
+  public void setTrick(Trick trick) {
+    this.trick = trick;
+  }
   // endregion Setters
 
   // region Methods
   //   region Public
-//  public void learnTrick(Trick trick) {
-//    this.trickList.add(trick);
-//  }
+  public void learnTrick(Trick trick) {
+    this.tricks.add(trick);
+  }
   //   endregion Public
 
 

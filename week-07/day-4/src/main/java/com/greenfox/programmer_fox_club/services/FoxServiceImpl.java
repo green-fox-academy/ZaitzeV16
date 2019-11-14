@@ -60,6 +60,7 @@ public class FoxServiceImpl implements FoxService {
   public void learnTrick(Fox fox, Trick trick) {
     fox.getTricks().add(trick);
     trick.getFoxes().add(fox);
+
     this.save(fox);
   }
   // endregion SaveUpdate

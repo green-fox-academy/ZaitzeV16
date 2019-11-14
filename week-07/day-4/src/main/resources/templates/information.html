@@ -13,20 +13,23 @@
   <img src="img/fox_default.jpg" alt="Not showin' ya' img..." th:height="350">
 
 
-<!--  <div th:object="${fox}">-->
-<!--    <span th:text="|-->
-<!--    Ya' pet's name is *{name} . Currently living on *{food} and *{drink}.|"></span>-->
-<!--&lt;!&ndash;    (S)He knows *{trickList.size()} tricks.&ndash;&gt;-->
+  <div th:object="${fox}">
+    <span th:text="|
+    Ya' pet's name is *{name} . Currently living on *{food} and *{drink}.|"></span>
+    <br>
+    <div th:insert="fragments/frg_selections :: trick_selection"></div>
 
-<!--    <br>-->
-<!--    <span>Such a pretty doggo! :)</span>-->
-<!--    <br>-->
-<!--&lt;!&ndash;    <ul th:if="*{trickList.size() > 0}" th:each="trick : *{trickList}">&ndash;&gt;-->
-<!--&lt;!&ndash;      <li th:text="${trick.getName()}"></li>&ndash;&gt;-->
-<!--&lt;!&ndash;    </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;    <span th:if="*{trickList.size() == 0}" th:text="|&ndash;&gt;-->
-<!--&lt;!&ndash;    *{name} does not now any tricks yet.... Such a shame. (S)he should learn some here.&ndash;&gt;-->
-<!--&lt;!&ndash;    |"></span>&ndash;&gt;-->
+
+
+    <br>
+    <span>Such a pretty doggo! :)</span>
+    <br>
+<!--    <ul th:if="*{trickList.size() > 0}" th:each="trick : *{trickList}">-->
+<!--      <li th:text="${trick.getName()}"></li>-->
+<!--    </ul>-->
+<!--    <span th:if="*{trickList.size() == 0}" th:text="|-->
+<!--    *{name} does not now any tricks yet.... Such a shame. (S)he should learn some here.-->
+<!--    |"></span>-->
 
 
 <!--  </div>-->

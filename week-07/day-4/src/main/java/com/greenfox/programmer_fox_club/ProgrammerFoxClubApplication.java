@@ -77,15 +77,24 @@ public class ProgrammerFoxClubApplication implements CommandLineRunner {
     fox3.setFood(kaja3);
     this.foxService.save(fox3);
 
-//    fox1.getTricks().add(this.trickService.findById(1));
-//    fox1.getTricks().add(this.trickService.findById(2));
-//    this.foxService.save(fox1);
-//    fox1.getTricks().add(this.trickService.findById(3));
-//    this.foxService.save(fox1);
 
-    this.foxService.learnTrick(fox1, this.trickService.findById(1));
-    this.foxService.learnTrick(fox1, this.trickService.findById(2));
-    this.foxService.learnTrick(fox1, this.trickService.findById(3));
+    fox1.getTricks().add(this.trickService.findById(2));
+    fox1.getTricks().add(this.trickService.findById(1));
+    fox1.getTricks().add(this.trickService.findById(3));
+    this.foxService.save(fox1);
+    fox3.getTricks().add(this.trickService.findById(1));
+    this.foxService.save(fox3);
+    fox1.getTricks().add(this.trickService.findById(3));
+    this.foxService.save(fox1);
+
+    // TODO: 2019. 11. 14. dögölj meg
+//    this.foxService.learnTrick(fox1, this.trickService.findById(2));
+//    this.foxService.learnTrick(fox1, this.trickService.findById(1));
+//    this.foxService.learnTrick(fox1, this.trickService.findById(3));
+//
+//    this.foxService.learnTrick(fox3, this.trickService.findById(3));
+//    this.foxService.learnTrick(fox3, this.trickService.findById(1));
+//    this.foxService.learnTrick(fox3, this.trickService.findById(2));
 
 //    this.foxService.learnTrick(fox1, trick1);
 //    this.foxService.learnTrick(fox1, trick2);

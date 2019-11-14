@@ -21,7 +21,9 @@ public class Trick {
   private long id;
   private String name;
 
-  @ManyToMany(fetch = FetchType.EAGER,
+  // TODO: 2019. 11. 14. BLACK MAGIC MííííííVAAAAAN 
+  @ManyToMany(
+      fetch = FetchType.EAGER,
       cascade = {CascadeType.PERSIST, CascadeType.MERGE},
       mappedBy = "tricks")
   private Set<Fox> foxes = new HashSet<>();
