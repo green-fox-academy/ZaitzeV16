@@ -32,12 +32,18 @@ public class GuardianControllerTest {
   @Test
   public void getGroot_WithParameter_StatusAndResponseIsProper() throws Exception {
     this.mockMvc.perform(get("/groot?message=randomcuccli"))
-//        .contentType(MediaType.APPLICATION_JSON))
-//        .content("{\"received\": \"randomcuccli\"}"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.received", is("randomcuccli")))
         .andExpect(jsonPath("$.translated", is("I am Groot!")));
+  }
+
+  @Test
+  public void getGroot_WithoutParameter_StatusAndResponseIsProper() throws Exception {
+    this.mockMvc.perform(get("/groot"))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.error", is("I am Groot!")));
   }
   // endregion getGroot
 }
