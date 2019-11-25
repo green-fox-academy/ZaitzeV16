@@ -86,4 +86,80 @@ public class GuardianControllerTest {
             is("No sufficient number of parameters provided!")));
   }
   // endregion getYondu
+
+
+  // region getRocket
+  @Test
+  public void getRocket_StatusAndResponseIsProper() throws Exception {
+    this.mockMvc.perform(get("/rocket"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.caliber25", is(0)))
+        .andExpect(jsonPath("$.caliber30", is(0)))
+        .andExpect(jsonPath("$.caliber50", is(0)))
+        .andExpect(jsonPath("$.shipStatus", is("empty")))
+        .andExpect(jsonPath("$.ready", is(false)));
+  }
+
+  @Test
+  public void getRocketFill_WithProperParams_StatusAndResponseIsProper() throws Exception {
+    this.mockMvc.perform(get("/rocket/fill?caliber=.50&amount=5000"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.received", is(".50")))
+        .andExpect(jsonPath("$.amount", is(5000)))
+        .andExpect(jsonPath("$.shipStatus", is("40%")))
+        .andExpect(jsonPath("$.ready", is(false)));
+  }
+
+  @Test
+  public void getRocket_AfterFillTo40Percent_StatusAndResponseIsProper() throws Exception {
+    this.mockMvc.perform(get("/rocket/fill?caliber=.50&amount=5000"));
+
+    this.mockMvc.perform(get("/rocket"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.caliber25", is(0)))
+        .andExpect(jsonPath("$.caliber30", is(0)))
+        .andExpect(jsonPath("$.caliber50", is(5000)))
+        .andExpect(jsonPath("$.shipStatus", is("40%")))
+        .andExpect(jsonPath("$.ready", is(false)));
+
+    this.mockMvc.perform(get("/rocket/fill?caliber=.50&amount=-5000"));
+  }
+
+  @Test
+  public void getRocket_AfterFillTo100Percent_StatusAndResponseIsProper() throws Exception {
+    this.mockMvc.perform(get("/rocket/fill?caliber=.50&amount=12500"));
+
+    this.mockMvc.perform(get("/rocket"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.caliber25", is(0)))
+        .andExpect(jsonPath("$.caliber30", is(0)))
+        .andExpect(jsonPath("$.caliber50", is(12500)))
+        .andExpect(jsonPath("$.shipStatus", is("full")))
+        .andExpect(jsonPath("$.ready", is(true)));
+
+    this.mockMvc.perform(get("/rocket/fill?caliber=.50&amount=-12500"));
+  }
+
+  @Test
+  public void getRocketFill_WithCaliberOnly_StatusAndResponseIsProper() throws Exception {
+    this.mockMvc.perform(get("/rocket/fill?caliber=.50"))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.error",
+            is("No sufficient number of parameters provided!")));
+  }
+
+  @Test
+  public void getRocketFill_WithAmountOnly_StatusAndResponseIsProper() throws Exception {
+    this.mockMvc.perform(get("/rocket/fill?amount=5000"))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.error",
+            is("No sufficient number of parameters provided!")));
+  }
+  // endregion getRocket
 }
