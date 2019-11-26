@@ -15,8 +15,7 @@ public interface SongRepository extends CrudRepository<Song, Long> {
 
   public List<Song> findAllByYear(int year);
 
-  @Query(value = "SELECT * FROM songs ORDER BY rating DESC LIMIT :year", nativeQuery = true)
-  public List<Song> findAllByOrOrderByRatingLimit(int year);
+  @Query(value = "SELECT * FROM songs ORDER BY rating DESC LIMIT :limit", nativeQuery = true)
+  public List<Song> findAllByOrOrderByRatingLimit(int limit);
 
-  public Song deleteById(long id);
 }

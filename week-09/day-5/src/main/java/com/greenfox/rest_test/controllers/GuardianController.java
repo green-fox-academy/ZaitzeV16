@@ -94,6 +94,19 @@ public class GuardianController {
             .collect(Collectors.toList())
     );
   }
+
+  @GetMapping(value = {"/awesome/top/{limit}", "/awesome/top/"})
+  public ResponseEntity<List<ResponseDTO>> getTopSongs(
+      @PathVariable(name = "limit", required = false) Integer limit) {
+    limit = (limit == null) ? 10 : limit;
+
+    return ResponseEntity.status(HttpStatus.OK).body(
+        this.songService.findAllByOrOrderByRatingLimit(limit)
+            .stream()
+            .map(SongResponseDTO::new)
+            .collect(Collectors.toList())
+    );
+  }
   // endregion GetMappings
 
 
@@ -120,11 +133,11 @@ public class GuardianController {
     if (id == null) {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     } else {
-      // TODO: 2019. 11. 25. lekezelni keresésselhe 
-      Song deletedSong = this.songService.deleteById(id);
+      Song deletedSong = this.songService.findById(id);
       if (deletedSong == null) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
       } else {
+        this.songService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body(
             new SongResponseDTO(deletedSong)
         );

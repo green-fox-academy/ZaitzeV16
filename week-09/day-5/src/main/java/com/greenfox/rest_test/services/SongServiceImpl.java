@@ -62,8 +62,8 @@ public class SongServiceImpl implements SongService {
   }
 
   @Override
-  public Song deleteById(long id) {
-    return this.repository.deleteById(id);
+  public void deleteById(long id) {
+    this.repository.deleteById(id);
   }
   // endregion Overrides
 }

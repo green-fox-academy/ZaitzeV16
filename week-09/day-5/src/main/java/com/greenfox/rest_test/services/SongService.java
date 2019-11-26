@@ -19,6 +19,6 @@ public interface SongService {
 
   public Song save(Song song);
 
-  public Song deleteById(long id);
+  public void deleteById(long id);
 
 }
