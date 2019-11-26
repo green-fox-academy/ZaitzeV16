@@ -1,5 +1,6 @@
 package com.greenfox.rest_test.services;
 
+import com.greenfox.rest_test.models.DTOs.ResponseDTO;
 import com.greenfox.rest_test.models.entities.Song;
 import java.util.List;
 
@@ -9,11 +10,14 @@ public interface SongService {
 
   public Song findById(long id);
 
-  public List<Song> findAllByAuthor(String author);
+  public List<Song> findAllByAuthorIgnoreCase(String author);
 
-  public List<Song> findAllByGenre(String author);
+  public List<Song> findAllByGenreIgnoreCase(String author);
 
-  public List<Song> findAllByYear(int year);
+  public List<Song> findAllByYear(Integer year);
+
+  public List<ResponseDTO> findAllByAuthorAndGenreAndYearIgnoreCase(String author, String genre,
+      Integer year);
 
   public List<Song> findAllByOrOrderByRatingLimit(int limit);
 

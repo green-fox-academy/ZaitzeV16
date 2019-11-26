@@ -107,9 +107,24 @@ public class GuardianController {
             .collect(Collectors.toList())
     );
   }
+
+  @GetMapping(value = "/song")
+  public ResponseEntity getSongsByAuthorGenreYear(
+      @RequestParam(name = "author", required = false) String author,
+      @RequestParam(name = "genre", required = false) String genre,
+      @RequestParam(name = "year", required = false) Integer year) {
+    List<ResponseDTO> queryResult = this.songService.findAllByAuthorAndGenreAndYearIgnoreCase(
+        author, genre, year);
+    if (queryResult.size() == 1 && queryResult.get(0) instanceof ErrorResponseDTO) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(queryResult.get(0));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(queryResult);
+    }
+  }
+
   // endregion GetMappings
 
-
+  //list only the same author, genre or year
   // region PostMappings
   @PostMapping(value = "/song/add")
   public ResponseEntity<ResponseDTO> addSong(

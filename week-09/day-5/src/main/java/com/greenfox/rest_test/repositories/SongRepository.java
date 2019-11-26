@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SongRepository extends CrudRepository<Song, Long> {
 
-  public List<Song> findAllByAuthor(String author);
+  public List<Song> findAllByAuthorIgnoreCase(String author);
 
-  public List<Song> findAllByGenre(String genre);
+  public List<Song> findAllByGenreIgnoreCase(String genre);
 
   public List<Song> findAllByYear(int year);
 
