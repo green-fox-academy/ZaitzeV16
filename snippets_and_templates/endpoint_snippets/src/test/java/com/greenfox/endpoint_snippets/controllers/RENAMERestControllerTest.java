@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class RENAMERestControllerTest {
   private MediaType contentType = new MediaType(
       MediaType.APPLICATION_JSON.getType(),
       MediaType.APPLICATION_JSON.getSubtype(),
-      Charset.forName("utf8"));
+      StandardCharsets.UTF_8);
 
   @Autowired
   private MockMvc mockMvc;
@@ -35,7 +36,7 @@ public class RENAMERestControllerTest {
   public void functionName_ModeOrParametersToTestWith_ExpectedResult() throws Exception {
     this.mockMvc.perform(get("/groot?message=randomcuccli"))
         .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON)) // or contentType?
+        .andExpect(content().contentType(contentType))
         .andExpect(jsonPath("$.received", is("randomcuccli")))
         .andExpect(jsonPath("$.translated", is("I am Groot!")));
   }
@@ -47,7 +48,7 @@ public class RENAMERestControllerTest {
   public void getYondu_WithDistanceParameter_StatusAndResponseIsProper() throws Exception {
     this.mockMvc.perform(get("/yondu?distance=100.0"))
         .andExpect(status().isBadRequest())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON)) // or contentType?
+        .andExpect(content().contentType(contentType))
         .andExpect(jsonPath("$.error",
             is("No sufficient number of parameters provided!")));
   }
