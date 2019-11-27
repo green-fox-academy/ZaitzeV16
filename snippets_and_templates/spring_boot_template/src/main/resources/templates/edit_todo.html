@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Edit Todo</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="/icons/style.css" type="text/css">
+</head>
+
+<body>
+
+  <h1>Edit Todo</h1>
+
+  <form th:action="@{'/todo/' + ${todo.getId()} +'/edit'}" th:method="post" th:object="${todo}">
+    <label for="todo_title">Todo Description</label>
+    <input type="text" id="todo_title" th:field="*{title}" required>
+
+    <br>
+
+    <label for="todo_urgent">Urgent</label>
+    <input type="checkbox" id="todo_urgent" th:field="*{isUrgent}">
+
+    <br>
+
+    <label for="todo_done">Done</label>
+    <input type="checkbox" id="todo_done" th:field="*{isDone}">
+
+    <br>
+
+    <label for="due_date">Due Date</label>
+    <input type="date" id="due_date" th:field="*{dueDate}">
+
+    <br>
+
+    <div th:insert="fragments/frg_selections :: assignees_selection"></div>
+
+    <br>
+
+    <button type="submit">Submit</button>
+
+    <!-- Onclick for button redirect to href -->
+    <button type="button" th:onclick="|window.location.href='@{/todo/list}'|">Cancel</button>
+  </form>
+
+</body>
+</html>

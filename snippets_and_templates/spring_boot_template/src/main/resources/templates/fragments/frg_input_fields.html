@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <body>
+
+    <div th:fragment="input_text">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text"
+                 for="text_input">
+            My Text Input
+          </label>
+        </div>
+        <input type="text"
+               id="text_input"
+               name="text_input"
+               required>
+      </div>
+    </div>
+
+    <div th:fragment="input_checkbox">
+      <div class="custom-control custom-checkbox">
+        <label class="custom-control-label"
+               for="customCheck1">
+          My checkbox input
+        </label>
+        <input type="checkbox"
+               class="custom-control-input"
+               id="customCheck1">
+      </div>
+    </div>
+
+    <div th:fragment="input_datetime_local">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text"
+                 for="datetime_local_input">
+            My Datetime Local Input
+          </label>
+        </div>
+        <input type="datetime-local"
+               id="datetime_local_input"
+               name="datetime_local_input"
+               required>
+      </div>
+    </div>
+
+    <div th:fragment="password_local">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text"
+                 for="password_input">
+            My Password Input
+          </label>
+        </div>
+        <input type="password"
+               id="password_input"
+               name="password_input"
+               required>
+      </div>
+    </div>
+
+  </body>
+</html>

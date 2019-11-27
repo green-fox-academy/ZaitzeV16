@@ -48,5 +48,7 @@ public class SbTemplateApplication implements CommandLineRunner {
   //    rename remove unused comments
   //    rename config endpoints
 
+  // TODO: remove unused dependencies!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   // TODO: CHECK EVERY FILE AT LEAST 3 TIMES!!!!!!!!!!!!!!!!!!!!!!!
 }
