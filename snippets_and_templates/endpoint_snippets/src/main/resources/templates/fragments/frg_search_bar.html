@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+  <body>
+
+  <div th:fragment="done_filter">
+    <form th:action="@{/todo/list}" th:method="post">
+      <button type="submit"
+              name="is_done"
+              class="btn btn-outline-success my-2 my-sm-0"
+              th:value="true">Done</button>
+      <button type="submit"
+              name="is_done"
+              class="btn btn-outline-success my-2 my-sm-0"
+              th:value="false">Undone</button>
+    </form>
+  </div>
+
+  <div th:fragment="search_bar" >
+    <form class="form-inline mt-2 mt-md-0" th:action="@{/todo/list}" th:method="post">
+      <div class="input-group">
+          <span class="input-group-prepend">
+            <button class="btn btn-outline-danger my-2 my-sm-0"
+                    type="submit">RESET</button>
+          </span>
+        <input class="form-control my-2 my-sm-0"
+               type="search"
+               placeholder="Title or name"
+               aria-label="Search"
+               name="title"
+               style="margin-right: 0">
+        <span class="input-group-append">
+            <button class="btn btn-outline-success my-2 my-sm-0"
+                    type="submit">GO</button>
+          </span>
+      </div>
+    </form>
+
+  </div>
+  </body>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+</html>

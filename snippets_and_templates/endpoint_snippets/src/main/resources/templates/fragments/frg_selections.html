@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<body>
+
+<div th:fragment="assignee_selection">
+  <div class="input-group col-md-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="assignees">Assignee</label>
+    </div>
+    <select name="assignee"
+            id="assignees"
+            class="custom-select"
+            th:field="*{assignee}" required>
+      <option th:each="assignee : ${assignees}"
+              th:text="${assignee.getName()}"
+              th:value="${assignee.getId()}"
+      ></option>
+    </select>
+  </div>
+</div>
+</body>
+
+</html>
