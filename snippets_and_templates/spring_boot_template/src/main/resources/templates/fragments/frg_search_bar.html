@@ -6,21 +6,21 @@
 </head>
   <body>
 
-  <div th:fragment="done_filter">
+  <div th:fragment="custom_filters">
     <form th:action="@{/todo/list}" th:method="post">
       <button type="submit"
-              name="is_done"
+              name="ADD NAME"
               class="btn btn-outline-success my-2 my-sm-0"
-              th:value="true">Done</button>
+              th:value="true">IS SOMETHING</button>
       <button type="submit"
-              name="is_done"
+              name="ADD NAME"
               class="btn btn-outline-success my-2 my-sm-0"
-              th:value="false">Undone</button>
+              th:value="false">IS SOMETHING ELSE</button>
     </form>
   </div>
 
   <div th:fragment="search_bar" >
-    <form class="form-inline mt-2 mt-md-0" th:action="@{/todo/list}" th:method="post">
+    <form class="form-inline mt-2 mt-md-0" th:action="@{/MY/ENDPOINT}" th:method="post">
       <div class="input-group">
           <span class="input-group-prepend">
             <button class="btn btn-outline-danger my-2 my-sm-0"
@@ -28,9 +28,9 @@
           </span>
         <input class="form-control my-2 my-sm-0"
                type="search"
-               placeholder="Title or name"
+               placeholder="WHAT TO SEARCH FOR"
                aria-label="Search"
-               name="title"
+               name="SOME FIELD"
                style="margin-right: 0">
         <span class="input-group-append">
             <button class="btn btn-outline-success my-2 my-sm-0"

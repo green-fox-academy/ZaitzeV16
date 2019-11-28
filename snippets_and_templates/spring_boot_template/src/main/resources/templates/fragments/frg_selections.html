@@ -3,18 +3,18 @@
 
 <body>
 
-<div th:fragment="assignee_selection">
+<div th:fragment="relation_selection">
   <div class="input-group col-md-3">
     <div class="input-group-prepend">
-      <label class="input-group-text" for="assignees">Assignee</label>
+      <label class="input-group-text" for="RELATION TO LIST">RELATION TO</label>
     </div>
-    <select name="assignee"
-            id="assignees"
+    <select name="RELATION TO"
+            id="RELATION TO LIST"
             class="custom-select"
-            th:field="*{assignee}" required>
-      <option th:each="assignee : ${assignees}"
-              th:text="${assignee.getName()}"
-              th:value="${assignee.getId()}"
+            th:field="*{RELATION TO}" required>
+      <option th:each="RELATION TO : ${RELATION TO LIST}"
+              th:text="${RELATION TO.getName()}"
+              th:value="${RELATION TO.getId()}"
       ></option>
     </select>
   </div>
