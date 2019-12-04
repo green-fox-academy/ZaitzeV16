@@ -33,6 +33,10 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    compile group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'
+
+
 }
 
 test {
