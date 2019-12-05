@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -31,7 +32,10 @@ public class Movie {
   private String original_title;
   private String title;
   private double vote_average;
+
+  @Column(length = 3000)
   private String overview;
+
   private Date release_date;
   // endregion Fields
 

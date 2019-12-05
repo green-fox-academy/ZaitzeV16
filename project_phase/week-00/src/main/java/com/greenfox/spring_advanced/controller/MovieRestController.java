@@ -15,25 +15,22 @@ public class MovieRestController {
 
   // region Fields
   private MovieService movieService;
-  private MovieApiService movieApiService;
   // endregion Fields
 
 
   // region Constructors
   @Autowired
-  public MovieRestController(MovieService movieService, MovieApiService movieApiService) {
+  public MovieRestController(MovieService movieService) {
     this.movieService = movieService;
-    this.movieApiService = movieApiService;
   }
   // endregion Constructors
 
 
   // region GetMappings
-  @GetMapping(value = "/")
+  @GetMapping(value = "/popular")
   public ResponseEntity<ResponseDTO> getPopular() {
-    System.out.println("======================");
     try {
-      return ResponseEntity.ok().body(this.movieApiService.getPopularMovies());
+      return ResponseEntity.ok().body(this.movieService.getPopularMovies());
     } catch (Exception e) {
       e.printStackTrace();
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
@@ -41,5 +38,17 @@ public class MovieRestController {
       );
     }
   }
+
+//  @GetMapping(value = "/popular/short")
+//  public ResponseEntity<ResponseDTO> getPopularShort() {
+//    try {
+//      return ResponseEntity.ok().body(this.movieService.getPopularMoviesShort());
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+//          new ErrorResponseDTO("A very meaningful error message")
+//      );
+//    }
+//  }
   // endregion GetMappings
 }
