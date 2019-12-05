@@ -14,6 +14,7 @@ public class ErrorResponseDTO implements ResponseDTO {
 
   // region Constructors
   public ErrorResponseDTO() {
+    this.error = "A very meaningful error message";
   }
 
   public ErrorResponseDTO(String error) {

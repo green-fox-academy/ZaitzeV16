@@ -60,17 +60,17 @@ public class MovieApiServiceImpl implements MovieApiService {
     int total_pages = (int) mostPopularResult.get("total_pages");
 
     mostPopularResult.getJSONArray("results")
-        .forEach(o -> results
-            .add(new MovieShortResponseDTO(
-                    page,
-                    total_pages,
-                    Long.valueOf(
-                        ((JSONObject) o).get("popularity")
-                            .toString()
-                            .replace(".", "")
-                    ),
-                    (String) (((JSONObject) o).get("title"))
-                )
+        .forEach(o -> results.add(
+            new MovieShortResponseDTO(
+                page,
+                total_pages,
+                Long.valueOf(
+                    ((JSONObject) o).get("popularity")
+                        .toString()
+                        .replace(".", "")
+                ),
+                (String) (((JSONObject) o).get("title"))
+            )
             )
         );
     return new MovieApiShortResponseDTO(results);

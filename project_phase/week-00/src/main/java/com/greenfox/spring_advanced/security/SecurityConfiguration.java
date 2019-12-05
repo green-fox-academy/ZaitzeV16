@@ -26,15 +26,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//    auth.jdbcAuthentication()
-//        .dataSource(dataSource)
-////        .usersByUsernameQuery("SELECT username, password, enabled "
-////            + "FROM users "
-////            + "WHERE username = ?")
-//        .authoritiesByUsernameQuery("SELECT username, authority "
-//            + "FROM users "
-//            + "WHERE username = ?");
-
     auth.userDetailsService(movieUserService);
   }
 
@@ -55,15 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.csrf()
         .disable()
         .authorizeRequests()
-        .antMatchers("/authenticate", "/popular/short")
+        .antMatchers("/", "/authentication")
         .permitAll()
         .anyRequest()
         .authenticated();
-
-//    http.authorizeRequests()
-//        .antMatchers("/submit", "/submit/", "/downvote/{id}", "/upvote/{id}")
-//        .hasAnyAuthority("USER")
-//        .antMatchers("/").permitAll()
-//        .and().formLogin();
   }
 }

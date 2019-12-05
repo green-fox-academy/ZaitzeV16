@@ -35,7 +35,7 @@ public class MovieRestController {
   @Autowired
   public MovieRestController(MovieService movieService,
       AuthenticationManager authenticationManager,
-      @Qualifier("myUserDetailsService") UserDetailsService userDetailsService,
+      @Qualifier("movieUserDetailsService") UserDetailsService userDetailsService,
       JwtUtil jwtUtil) {
     this.movieService = movieService;
     this.authenticationManager = authenticationManager;
@@ -57,7 +57,7 @@ public class MovieRestController {
     } catch (Exception e) {
       e.printStackTrace();
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-          new ErrorResponseDTO("A very meaningful error message")
+          new ErrorResponseDTO()
       );
     }
   }
@@ -69,7 +69,7 @@ public class MovieRestController {
     } catch (Exception e) {
       e.printStackTrace();
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-          new ErrorResponseDTO("A very meaningful error message")
+          new ErrorResponseDTO()
       );
     }
   }
@@ -79,10 +79,8 @@ public class MovieRestController {
   // region PostMappings
   @PostMapping(value = "/authentication")
   public ResponseEntity<ResponseDTO> createAuthenticationToken(
-      @RequestBody AuthenticationRequestDTO authenticationRequestDTO
-  ) throws Exception {
+      @RequestBody AuthenticationRequestDTO authenticationRequestDTO) {
     try {
-
       this.authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(
               authenticationRequestDTO.getUsername(),
@@ -90,7 +88,9 @@ public class MovieRestController {
           )
       );
     } catch (BadCredentialsException bce) {
-      throw new Exception("Incorrect username or password", bce);
+      return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+          new ErrorResponseDTO("Incorrect username or password")
+      );
     }
 
     final UserDetails userDetails = this.userDetailsService.loadUserByUsername(

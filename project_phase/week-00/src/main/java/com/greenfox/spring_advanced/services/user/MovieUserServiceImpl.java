@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("myUserDetailsService")
+@Qualifier("movieUserDetailsService")
 public class MovieUserServiceImpl implements MovieUserService {
 
   // region Fields
