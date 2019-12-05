@@ -1,6 +1,8 @@
 package com.greenfox.spring_advanced.models.dtos;
 
-public class AuthenticationResponseDTO implements ResponseDTO {
+import java.io.Serializable;
+
+public class AuthenticationResponseDTO implements ResponseDTO, Serializable {
 
   // region Fields
   private final String jwt;
@@ -19,6 +21,5 @@ public class AuthenticationResponseDTO implements ResponseDTO {
     return jwt;
   }
   // endregion Getters
-
 
 }

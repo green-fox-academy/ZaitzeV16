@@ -8,12 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 @Qualifier("movieUserDetailsService")
-public class MovieUserServiceImpl implements MovieUserService {
+public class MovieUserServiceImpl implements MovieUserService, UserDetailsService {
 
   // region Fields
   private MovieUserRepository movieUserRepository;
@@ -61,7 +62,7 @@ public class MovieUserServiceImpl implements MovieUserService {
   // region Security
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return new User("root", "root", new ArrayList<>());
+    return new User("root", "retekeger", new ArrayList<>());
     //    return this.movieUserRepository.findByUsername(username);
   }
   // endregion Security

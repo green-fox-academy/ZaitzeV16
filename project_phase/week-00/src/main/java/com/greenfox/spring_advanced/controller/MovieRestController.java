@@ -5,7 +5,8 @@ import com.greenfox.spring_advanced.models.dtos.AuthenticationResponseDTO;
 import com.greenfox.spring_advanced.models.dtos.ErrorResponseDTO;
 import com.greenfox.spring_advanced.models.dtos.ResponseDTO;
 import com.greenfox.spring_advanced.services.MovieService;
-import com.greenfox.spring_advanced.services.utilities.JwtUtil;
+import com.greenfox.spring_advanced.services.user.MovieUserService;
+import com.greenfox.spring_advanced.services.utilities.JwtUtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,9 @@ public class MovieRestController {
 
   // region Fields
   private MovieService movieService;
-  private UserDetailsService userDetailsService;
+  private MovieUserService movieUserService;
   private AuthenticationManager authenticationManager;
-  private JwtUtil jwtUtil;
+  private JwtUtilityService jwtUtilityService;
   // endregion Fields
 
 
@@ -35,11 +36,12 @@ public class MovieRestController {
   @Autowired
   public MovieRestController(MovieService movieService,
       AuthenticationManager authenticationManager,
-      @Qualifier("movieUserDetailsService") UserDetailsService userDetailsService,
-      JwtUtil jwtUtil) {
+      @Qualifier("movieUserDetailsService") MovieUserService movieUserService,
+      JwtUtilityService jwtUtilityService) {
     this.movieService = movieService;
     this.authenticationManager = authenticationManager;
-    this.jwtUtil = jwtUtil;
+    this.jwtUtilityService = jwtUtilityService;
+    this.movieUserService = movieUserService;
   }
   // endregion Constructors
 
@@ -47,7 +49,7 @@ public class MovieRestController {
   // region GetMappings
   @GetMapping(value = "/")
   public ResponseEntity<ResponseDTO> testJWT() {
-    return ResponseEntity.ok(new ErrorResponseDTO("Ain't no pro here with security"));
+    return ResponseEntity.ok(new ErrorResponseDTO("Ain't no prob here with security"));
   }
 
   @GetMapping(value = "/popular")
@@ -77,7 +79,7 @@ public class MovieRestController {
 
 
   // region PostMappings
-  @PostMapping(value = "/authentication")
+  @PostMapping(value = "/authenticate")
   public ResponseEntity<ResponseDTO> createAuthenticationToken(
       @RequestBody AuthenticationRequestDTO authenticationRequestDTO) {
     try {
@@ -89,13 +91,13 @@ public class MovieRestController {
       );
     } catch (BadCredentialsException bce) {
       return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
-          new ErrorResponseDTO("Incorrect username or password")
+          new ErrorResponseDTO("Incorrect username or password!")
       );
     }
 
-    final UserDetails userDetails = this.userDetailsService.loadUserByUsername(
+    final UserDetails userDetails = this.movieUserService.loadUserByUsername(
         authenticationRequestDTO.getUsername());
-    final String jwt = this.jwtUtil.generateToken(userDetails);
+    final String jwt = this.jwtUtilityService.generateToken(userDetails);
 
     return ResponseEntity.ok(new AuthenticationResponseDTO(jwt));
   }
