@@ -3,7 +3,6 @@ package com.greenfox.spring_advanced.controller;
 import com.greenfox.spring_advanced.models.dtos.ErrorResponseDTO;
 import com.greenfox.spring_advanced.models.dtos.ResponseDTO;
 import com.greenfox.spring_advanced.services.MovieService;
-import com.greenfox.spring_advanced.services.movie_api.MovieApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,7 @@ public class MovieRestController {
   @GetMapping(value = "/popular")
   public ResponseEntity<ResponseDTO> getPopular() {
     try {
-      return ResponseEntity.ok().body(this.movieService.getPopularMovies());
+      return ResponseEntity.ok(this.movieService.getPopularMoviesDTO());
     } catch (Exception e) {
       e.printStackTrace();
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
@@ -39,16 +38,16 @@ public class MovieRestController {
     }
   }
 
-//  @GetMapping(value = "/popular/short")
-//  public ResponseEntity<ResponseDTO> getPopularShort() {
-//    try {
-//      return ResponseEntity.ok().body(this.movieService.getPopularMoviesShort());
-//    } catch (Exception e) {
-//      e.printStackTrace();
-//      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-//          new ErrorResponseDTO("A very meaningful error message")
-//      );
-//    }
-//  }
+  @GetMapping(value = "/popular/short")
+  public ResponseEntity<ResponseDTO> getPopularShort() {
+    try {
+      return ResponseEntity.ok(this.movieService.getPopularMoviesShortDTO());
+    } catch (Exception e) {
+      e.printStackTrace();
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+          new ErrorResponseDTO("A very meaningful error message")
+      );
+    }
+  }
   // endregion GetMappings
 }

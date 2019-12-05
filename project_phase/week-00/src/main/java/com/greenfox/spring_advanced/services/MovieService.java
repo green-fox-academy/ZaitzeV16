@@ -1,6 +1,7 @@
 package com.greenfox.spring_advanced.services;
 
 import com.greenfox.spring_advanced.models.dtos.MovieApiResponseDTO;
+import com.greenfox.spring_advanced.models.dtos.MovieApiShortResponseDTO;
 import com.greenfox.spring_advanced.models.entities.Movie;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
@@ -16,6 +17,8 @@ public interface MovieService {
 
   public List<Movie> findAll();
 
-  public MovieApiResponseDTO getPopularMovies() throws UnirestException, IOException;
+  public MovieApiResponseDTO getPopularMoviesDTO() throws UnirestException, IOException;
+
+  public MovieApiShortResponseDTO getPopularMoviesShortDTO() throws UnirestException, IOException;
 
 }

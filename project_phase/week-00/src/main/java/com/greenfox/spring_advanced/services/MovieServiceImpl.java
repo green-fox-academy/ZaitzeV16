@@ -1,6 +1,7 @@
 package com.greenfox.spring_advanced.services;
 
 import com.greenfox.spring_advanced.models.dtos.MovieApiResponseDTO;
+import com.greenfox.spring_advanced.models.dtos.MovieApiShortResponseDTO;
 import com.greenfox.spring_advanced.models.entities.Movie;
 import com.greenfox.spring_advanced.repositories.MovieRepository;
 import com.greenfox.spring_advanced.services.movie_api.MovieApiService;
@@ -31,6 +32,8 @@ public class MovieServiceImpl implements MovieService {
   // endregion Constructors
 
 
+  // region CRUD
+  //   region Create-Update
   @Override
   public Movie save(Movie movie) {
     return this.movieRepository.save(movie);
@@ -42,16 +45,29 @@ public class MovieServiceImpl implements MovieService {
   }
 
   @Override
+  public MovieApiResponseDTO getPopularMoviesDTO() throws UnirestException, IOException {
+    MovieApiResponseDTO responseDTO = this.movieApiService.getPopularMoviesDTO();
+    this.movieRepository.saveAll(responseDTO.getResults());
+    return responseDTO;
+  }
+  //   endregion Create-Update
+
+
+  //   region Read
+  @Override
   public List<Movie> findAll() {
     List<Movie> movies = new ArrayList<>();
     this.movieRepository.findAll().forEach(movies::add);
     return movies;
   }
+  //   endregion Read
+
+  //   region Delete
+  //   endregion Delete
+  // endregion CRUD
 
   @Override
-  public MovieApiResponseDTO getPopularMovies() throws UnirestException, IOException {
-    MovieApiResponseDTO responseDTO = this.movieApiService.getPopularMovies();
-    this.movieRepository.saveAll(responseDTO.getResults());
-    return responseDTO;
+  public MovieApiShortResponseDTO getPopularMoviesShortDTO() throws UnirestException, IOException {
+    return this.movieApiService.getPopularMoviesShortDTO();
   }
 }
