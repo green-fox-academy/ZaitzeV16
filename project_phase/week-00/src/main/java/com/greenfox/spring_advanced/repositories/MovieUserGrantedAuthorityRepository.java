@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface MovieUserGrantedAuthorityRepository extends
     CrudRepository<MovieUserGrantedAuthority, Long> {
 
+  public MovieUserGrantedAuthority findByAuthority(String authority);
 }
