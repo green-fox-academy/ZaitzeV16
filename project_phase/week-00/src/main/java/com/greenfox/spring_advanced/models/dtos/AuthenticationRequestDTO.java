@@ -16,5 +16,4 @@ public class AuthenticationRequestDTO implements RequestDTO, Serializable {
   private String username;
   private String password;
   // endregion Fields
-
 }

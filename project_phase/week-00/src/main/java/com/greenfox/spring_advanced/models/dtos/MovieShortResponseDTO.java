@@ -21,8 +21,10 @@ public class MovieShortResponseDTO {
   // endregion Fields
 
 
+  // region Constructors
   public MovieShortResponseDTO(Long popularity) {
     this.popularity = popularity;
   }
+  // endregion Constructors
 }
 

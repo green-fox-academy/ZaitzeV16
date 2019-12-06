@@ -2,7 +2,6 @@ package com.greenfox.spring_advanced.services.user;
 
 import com.greenfox.spring_advanced.models.entities.MovieUser;
 import com.greenfox.spring_advanced.repositories.MovieUserRepository;
-import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User;

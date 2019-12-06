@@ -18,5 +18,4 @@ public class MovieApiResponseDTO implements ResponseDTO {
   private long total_pages;
   private List<Movie> results;
   // endregion Fields
-
 }

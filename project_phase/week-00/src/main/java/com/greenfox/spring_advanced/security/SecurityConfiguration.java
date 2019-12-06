@@ -2,7 +2,6 @@ package com.greenfox.spring_advanced.security;
 
 import com.greenfox.spring_advanced.filters.JwtRequestFilter;
 import com.greenfox.spring_advanced.services.user.MovieUserServiceImpl;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,15 +17,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  private DataSource dataSource;
-  //  private MovieUserService movieUserService;
   private MovieUserServiceImpl movieUserService;
   private JwtRequestFilter jwtRequestFilter;
 
   @Autowired
-  public SecurityConfiguration(DataSource dataSource, MovieUserServiceImpl movieUserService,
+  public SecurityConfiguration(MovieUserServiceImpl movieUserService,
       JwtRequestFilter jwtRequestFilter) {
-    this.dataSource = dataSource;
     this.movieUserService = movieUserService;
     this.jwtRequestFilter = jwtRequestFilter;
   }

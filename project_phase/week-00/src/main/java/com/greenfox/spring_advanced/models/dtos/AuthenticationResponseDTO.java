@@ -21,5 +21,4 @@ public class AuthenticationResponseDTO implements ResponseDTO, Serializable {
     return jwt;
   }
   // endregion Getters
-
 }

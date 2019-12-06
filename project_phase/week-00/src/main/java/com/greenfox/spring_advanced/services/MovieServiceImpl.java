@@ -47,6 +47,7 @@ public class MovieServiceImpl implements MovieService {
   @Override
   public MovieApiResponseDTO getPopularMoviesDTO() throws UnirestException, IOException {
     MovieApiResponseDTO responseDTO = this.movieApiService.getPopularMoviesDTO();
+    // maybe this should be separated / changed
     this.movieRepository.saveAll(responseDTO.getResults());
     return responseDTO;
   }
@@ -60,14 +61,11 @@ public class MovieServiceImpl implements MovieService {
     this.movieRepository.findAll().forEach(movies::add);
     return movies;
   }
-  //   endregion Read
-
-  //   region Delete
-  //   endregion Delete
-  // endregion CRUD
 
   @Override
   public MovieApiShortResponseDTO getPopularMoviesShortDTO() throws UnirestException, IOException {
     return this.movieApiService.getPopularMoviesShortDTO();
   }
+  //   endregion Read
+  // endregion CRUD
 }

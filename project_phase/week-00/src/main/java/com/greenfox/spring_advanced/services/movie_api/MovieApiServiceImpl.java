@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class MovieApiServiceImpl implements MovieApiService {
 
   // region Fields
-  private final String url = System.getenv("MOVIE_API_BASE_URL");
+  private final String BASE_URL = System.getenv("MOVIE_API_BASE_URL");
   private final ObjectMapper objectMapper = new ObjectMapper();
 
 
@@ -47,14 +47,14 @@ public class MovieApiServiceImpl implements MovieApiService {
   @Override
   public MovieApiResponseDTO getPopularMoviesDTO() throws UnirestException, IOException {
     return this.objectMapper.readValue(
-        this.getPopularMovies(this.url, this.params).toString(),
+        this.getPopularMovies(this.BASE_URL, this.params).toString(),
         MovieApiResponseDTO.class);
   }
 
   @Override
   public MovieApiShortResponseDTO getPopularMoviesShortDTO() throws UnirestException {
     List<MovieShortResponseDTO> results = new ArrayList<>();
-    JSONObject mostPopularResult = this.getPopularMovies(this.url, this.params);
+    JSONObject mostPopularResult = this.getPopularMovies(this.BASE_URL, this.params);
 
     int page = (int) mostPopularResult.get("page");
     int total_pages = (int) mostPopularResult.get("total_pages");
@@ -71,8 +71,7 @@ public class MovieApiServiceImpl implements MovieApiService {
                 ),
                 (String) (((JSONObject) o).get("title"))
             )
-            )
-        );
+        ));
     return new MovieApiShortResponseDTO(results);
   }
   // endregion Popular

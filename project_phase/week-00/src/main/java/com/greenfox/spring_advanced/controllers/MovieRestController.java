@@ -1,4 +1,4 @@
-package com.greenfox.spring_advanced.controller;
+package com.greenfox.spring_advanced.controllers;
 
 import com.greenfox.spring_advanced.models.dtos.AuthenticationRequestDTO;
 import com.greenfox.spring_advanced.models.dtos.AuthenticationResponseDTO;
