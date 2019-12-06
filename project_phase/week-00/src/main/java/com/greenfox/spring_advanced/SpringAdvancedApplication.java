@@ -1,7 +1,7 @@
 package com.greenfox.spring_advanced;
 
 import com.greenfox.spring_advanced.models.entities.MovieUser;
-import com.greenfox.spring_advanced.services.user.MovieUserService;
+import com.greenfox.spring_advanced.services.user.MovieUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringAdvancedApplication implements CommandLineRunner {
 
-  private MovieUserService movieUserService;
+  private MovieUserServiceImpl movieUserService;
 
   @Autowired
   public SpringAdvancedApplication(
-      MovieUserService movieUserService) {
+      MovieUserServiceImpl movieUserService) {
     this.movieUserService = movieUserService;
   }
 

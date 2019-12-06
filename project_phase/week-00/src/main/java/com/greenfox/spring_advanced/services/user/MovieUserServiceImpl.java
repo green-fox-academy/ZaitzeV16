@@ -3,7 +3,6 @@ package com.greenfox.spring_advanced.services.user;
 import com.greenfox.spring_advanced.models.entities.MovieUser;
 import com.greenfox.spring_advanced.repositories.MovieUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@Qualifier("movieUserDetailsService")
 public class MovieUserServiceImpl implements MovieUserService, UserDetailsService {
 
   // region Fields

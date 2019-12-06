@@ -6,6 +6,7 @@ import com.greenfox.spring_advanced.models.dtos.ErrorResponseDTO;
 import com.greenfox.spring_advanced.models.dtos.ResponseDTO;
 import com.greenfox.spring_advanced.services.MovieService;
 import com.greenfox.spring_advanced.services.user.MovieUserService;
+import com.greenfox.spring_advanced.services.user.MovieUserServiceImpl;
 import com.greenfox.spring_advanced.services.utilities.JwtUtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,7 +36,7 @@ public class MovieRestController {
   @Autowired
   public MovieRestController(MovieService movieService,
       AuthenticationManager authenticationManager,
-      @Qualifier("movieUserDetailsService") MovieUserService movieUserService,
+      MovieUserService movieUserService,
       JwtUtilityService jwtUtilityService) {
     this.movieService = movieService;
     this.authenticationManager = authenticationManager;
@@ -79,7 +80,7 @@ public class MovieRestController {
 
   // region PostMappings
   @PostMapping(value = "/authenticate")
-  public ResponseEntity<ResponseDTO> createAuthenticationToken(
+  public ResponseEntity<ResponseDTO> authenticate(
       @RequestBody AuthenticationRequestDTO authenticationRequestDTO) {
     try {
       this.authenticationManager.authenticate(
