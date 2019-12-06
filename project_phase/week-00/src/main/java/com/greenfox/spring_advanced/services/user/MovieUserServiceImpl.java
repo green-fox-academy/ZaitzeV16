@@ -1,12 +1,12 @@
 package com.greenfox.spring_advanced.services.user;
 
-import com.greenfox.spring_advanced.models.entities.MovieUserDetails;
+import com.greenfox.spring_advanced.models.entities.MovieUser;
 import com.greenfox.spring_advanced.repositories.MovieUserRepository;
 import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,29 +31,22 @@ public class MovieUserServiceImpl implements MovieUserService, UserDetailsServic
 
   // region CRUD
   //   region Create
-  public MovieUserDetails save(MovieUserDetails movieUserDetails) {
-    return this.movieUserRepository.save(movieUserDetails);
-  }
-
-  public MovieUserDetails save(String name) {
-    return this.movieUserRepository.save(new MovieUserDetails(name));
+  @Override
+  public MovieUser save(MovieUser movieUser) {
+    return this.movieUserRepository.save(movieUser);
   }
   //   endregion Create
 
 
   //   region Read
-  public MovieUserDetails findById(long id) {
+  @Override
+  public MovieUser findById(long id) {
     return this.movieUserRepository.findById(id).orElse(null);
   }
 
-  public MovieUserDetails findByUsername(String username) {
+  @Override
+  public MovieUser findByUsername(String username) {
     return this.movieUserRepository.findByUsername(username);
-  }
-
-  public List<MovieUserDetails> findAll() {
-    List<MovieUserDetails> movieUserDetails = new ArrayList<>();
-    this.movieUserRepository.findAll().forEach(movieUserDetails::add);
-    return movieUserDetails;
   }
   //   endregion Read
   // endregion CRUD
@@ -62,8 +55,13 @@ public class MovieUserServiceImpl implements MovieUserService, UserDetailsServic
   // region Security
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return new User("root", "retekeger", new ArrayList<>());
-    //    return this.movieUserRepository.findByUsername(username);
+    MovieUser user = this.movieUserRepository.findByUsername(username);
+    UserBuilder userBuilder;
+    userBuilder = User.withUsername(username);
+    userBuilder.password(user.getPassword());
+    userBuilder.roles(user.getAuthority());
+    return userBuilder.build();
+
   }
   // endregion Security
 }

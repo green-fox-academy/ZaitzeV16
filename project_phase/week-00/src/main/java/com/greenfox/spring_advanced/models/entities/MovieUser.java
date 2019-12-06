@@ -1,9 +1,5 @@
 package com.greenfox.spring_advanced.models.entities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,15 +9,13 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "users")
-public class MovieUserDetails implements UserDetails {
+@Table(name = "movie_users")
+public class MovieUser {
 
   // region Fields
   @Id
@@ -36,30 +30,11 @@ public class MovieUserDetails implements UserDetails {
 
 
   // region Constructors
-  public MovieUserDetails(String username) {
+  public MovieUser(String username, String password) {
     this.username = username;
+    this.password = password;
     this.enabled = true;
     this.authority = "USER";
-  }
-
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return null;
-  }
-
-  @Override
-  public boolean isAccountNonExpired() {
-    return this.enabled;
-  }
-
-  @Override
-  public boolean isAccountNonLocked() {
-    return this.enabled;
-  }
-
-  @Override
-  public boolean isCredentialsNonExpired() {
-    return this.enabled;
   }
   // endregion Constructors
 }
