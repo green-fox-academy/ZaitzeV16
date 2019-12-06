@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -89,10 +90,10 @@ public class MovieRestController {
               authenticationRequestDTO.getPassword()
           )
       );
-    } catch (BadCredentialsException bce) {
+    } catch (AuthenticationException e) {
+      // need `AuthenticationException` to catch exception when no user with given username found
       return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
-          new ErrorResponseDTO("Incorrect username or password!")
-      );
+          new ErrorResponseDTO("Incorrect username or password!"));
     }
 
     final UserDetails userDetails = this.movieUserService.loadUserByUsername(
