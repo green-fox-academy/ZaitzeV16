@@ -13,9 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greenfox.spring_advanced.models.dtos.AuthenticationRequestDTO;
 import com.greenfox.spring_advanced.services.MovieService;
 import com.greenfox.spring_advanced.services.user.MovieUserService;
-import com.greenfox.spring_advanced.services.user.MovieUserServiceImpl;
 import com.greenfox.spring_advanced.services.utilities.JwtUtilityService;
-import java.nio.charset.StandardCharsets;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +21,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -35,8 +35,7 @@ public class MovieRestControllerTest {
 
   // region Fields
   private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
-      MediaType.APPLICATION_JSON.getSubtype(),
-      StandardCharsets.UTF_8);
+      MediaType.APPLICATION_JSON.getSubtype());
 
 
   // region MockBeans
@@ -51,6 +50,9 @@ public class MovieRestControllerTest {
 
   @MockBean
   private MovieService movieService;
+
+  @MockBean
+  private AuthenticationException authenticationException;
   // endregion MockBeans
 
 
@@ -63,7 +65,7 @@ public class MovieRestControllerTest {
 
   // region /authenticate endpoint
   @Test
-  public void authenticate_ValidCredentials_JwtTokenInBody() throws Exception {
+  public void authenticate_ValidCredentials_OkJwtTokenInBody() throws Exception {
     String username = "root";
     String password = "nemRoot";
     String token = "token";
@@ -87,10 +89,14 @@ public class MovieRestControllerTest {
   }
 
   @Test
-  public void authenticate_UsernameAndPwInvalid_StatusUnauthorizedWithCustomErrorMsg()
+  @WithAnonymousUser
+  public void authenticate_UsernameAndPwInvalid_UnauthorizedWithCustomErrorMsg()
       throws Exception {
     String username = "willNotWork";
     String password = "yeah";
+
+    when(this.authenticationManager.authenticate(any()))
+        .thenThrow(this.authenticationException);
 
     AuthenticationRequestDTO autRequestDTO = new AuthenticationRequestDTO(username, password);
 
@@ -112,6 +118,9 @@ public class MovieRestControllerTest {
 
     AuthenticationRequestDTO autRequestDTO = new AuthenticationRequestDTO(username, password);
 
+    when(this.authenticationManager.authenticate(any()))
+        .thenThrow(this.authenticationException);
+
     this.mockMvc.perform(post("/authenticate")
         .contentType(contentType)
         .content(this.objectMapper.writeValueAsString(autRequestDTO))
@@ -122,23 +131,26 @@ public class MovieRestControllerTest {
         );
   }
 
-//  @Test
-//  public void authenticate_UsernameValidPwInvalid_StatusUnauthorizedWithCustomErrorMsg()
-//      throws Exception {
-//    String username = "root";
-//    String password = "yeah";
-//
-//    AuthenticationRequestDTO autRequestDTO = new AuthenticationRequestDTO(username, password);
-//
-//    this.mockMvc.perform(post("/authenticate")
-//        .contentType(contentType)
-//        .content(this.objectMapper.writeValueAsString(autRequestDTO))
-//    )
-//        .andExpect(status().isUnauthorized())
-//        .andExpect(content().contentType(contentType))
-//        .andExpect(jsonPath("$.error", is("Incorrect username or password!"))
-//        );
-//  }
+  @Test
+  public void authenticate_UsernameValidPwInvalid_StatusUnauthorizedWithCustomErrorMsg()
+      throws Exception {
+    String username = "root";
+    String password = "yeah";
+
+    AuthenticationRequestDTO autRequestDTO = new AuthenticationRequestDTO(username, password);
+
+    when(this.authenticationManager.authenticate(any()))
+        .thenThrow(this.authenticationException);
+
+    this.mockMvc.perform(post("/authenticate")
+        .contentType(contentType)
+        .content(this.objectMapper.writeValueAsString(autRequestDTO))
+    )
+        .andExpect(status().isUnauthorized())
+        .andExpect(content().contentType(contentType))
+        .andExpect(jsonPath("$.error", is("Incorrect username or password!"))
+        );
+  }
   // endregion /authenticate endpoint
 
 
