@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MovieUserServiceImpl implements MovieUserService, UserDetailsService {
+public class MovieUserServiceImpl implements MovieUserService {
 
   // region Fields
   private MovieUserRepository movieUserRepository;

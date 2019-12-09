@@ -1,6 +1,6 @@
 package com.greenfox.spring_advanced.filters;
 
-import com.greenfox.spring_advanced.services.user.MovieUserServiceImpl;
+import com.greenfox.spring_advanced.services.user.MovieUserService;
 import com.greenfox.spring_advanced.services.utilities.JwtUtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,14 +19,14 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-  private MovieUserServiceImpl userDetailsService;
+  private MovieUserService movieUserService;
   private JwtUtilityService jwtUtil;
 
   @Autowired
   public JwtRequestFilter(
-      MovieUserServiceImpl userDetailsService,
+      MovieUserService movieUserService,
       JwtUtilityService jwtUtil) {
-    this.userDetailsService = userDetailsService;
+    this.movieUserService = movieUserService;
     this.jwtUtil = jwtUtil;
   }
 
@@ -47,7 +47,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-      UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+      UserDetails userDetails = this.movieUserService.loadUserByUsername(username);
 
       if (jwtUtil.validateToken(jwt, userDetails)) {
 
