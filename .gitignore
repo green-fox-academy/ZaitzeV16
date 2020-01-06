@@ -148,7 +148,8 @@ gradle-app.setting
 # modules.xml
 # .idea/misc.xml
 # *.ipr
-*.venv/*
+*.venv/
+*venv/
 # Sonarlint plugin
 .idea/**/sonarlint/
 
